@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Wall — Project Page</title>
+<style>
+    :root{--bg:#1A1A1D;--bg-soft:#111218;--panel:#1e1e25;--line:rgba(255,255,255,.1);--text:#f5f5f2;--muted:#a7a9b4;--red:#E6397C;--red2:#ff5a95;--shadow:0 24px 70px rgba(0,0,0,.35);--radius:22px;--max:1200px;}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#141416,#1A1A1D);color:var(--text)}
+    a{text-decoration:none;color:inherit} img,video{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .header{position:sticky;top:0;z-index:60;backdrop-filter:blur(18px);background:rgba(20,20,23,.56);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:14px;flex-wrap:wrap}
+    .brand{font-size:14px;letter-spacing:.22em;text-transform:uppercase}
+    .links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:.25s ease;font-size:14px;background:transparent;color:#fff;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.24)}
+    .btn.primary{background:var(--red);border-color:var(--red)}
+    .btn.primary:hover{background:var(--red2);border-color:var(--red2)}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,.12);padding:9px 12px;border-radius:999px;color:#d6d7de;cursor:pointer}
+    .hero{position:relative;min-height:68vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.74)),linear-gradient(90deg,rgba(4,4,7,.94) 0%, rgba(4,4,7,.68) 48%, rgba(4,4,7,.2) 100%);z-index:1}
+    .hero-bg{position:absolute;inset:0;background:url('assets/the-wall/eva-closeup.jpg') center/cover no-repeat;transform:scale(1.03)}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:104px 0 42px clamp(38px,6vw,108px);display:grid;grid-template-columns:1.06fr .94fr;gap:18px;align-items:end}
+    .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d8d9df}
+    h1{font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-.04em;margin:16px 0 16px}
+    .sub{font-size:18px;color:#dfe1e9;line-height:1.8;max-width:720px;margin:0 0 22px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}.chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(230,57,124,.12);border:1px solid rgba(230,57,124,.34);color:#ffcbdc;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .meta .cell,.panel,.still,.step,.card{background:rgba(10,10,14,.45);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow)}
+    .meta .cell{padding:18px}.meta span{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9da1af;margin-bottom:8px}.meta strong{font-size:17px;line-height:1.65}
+    .hero-note{padding:22px;background:rgba(10,10,14,.56);border:1px solid rgba(255,255,255,.08);border-radius:24px;box-shadow:var(--shadow)}
+    .hero-note h3{margin:0 0 10px;font-size:22px}.hero-note p{margin:0;color:#c7cad4;line-height:1.85}
+    section{padding:62px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:22px}.section-head h2{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.03em;line-height:1.05}.section-head p{max-width:620px;margin:0;color:var(--muted);line-height:1.82}
+    .video-wrap{overflow:hidden;border-radius:26px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)} video{width:100%;height:auto;background:#000}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:24px}.panel h3{margin:0 0 12px;font-size:24px}.panel p{margin:0 0 12px;color:var(--muted);line-height:1.86}
+    .highlight{display:grid;grid-template-columns:.98fr 1.02fr;gap:18px;align-items:stretch}
+    .focus-visual{overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)} .focus-visual img{width:100%;height:100%;object-fit:cover}
+    .stills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.still{overflow:hidden}.still img{width:100%;aspect-ratio:16/10;object-fit:cover}.still .copy{padding:16px}.still h4{margin:0 0 8px;font-size:19px}.still p{margin:0;color:var(--muted);line-height:1.78;font-size:14px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step{padding:20px}.step small{display:block;color:#8f94a2;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}.step strong{display:block;font-size:17px;margin-bottom:10px}.step p{margin:0;color:var(--muted);line-height:1.78;font-size:14px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{padding:22px}.card h4{margin:0 0 10px;font-size:20px}.card p{margin:0;color:var(--muted);line-height:1.84}
+    .design-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.design-grid .card{padding:0;overflow:hidden}.design-grid img{width:100%;aspect-ratio:16/10;object-fit:cover}.design-grid .copy{padding:16px}
+    .editable{outline:none;border-radius:8px;transition:.2s ease}.editable:focus{box-shadow:0 0 0 1px rgba(230,57,124,.5);background:rgba(230,57,124,.06)}
+    .lang-en{display:none} body.lang-en .lang-cn{display:none} body.lang-en .lang-en{display:unset}
+    .footer{padding:24px 0 40px;color:#989da8}.footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid rgba(255,255,255,.07);padding-top:20px}
+    @media (max-width:1100px){.hero-inner,.two-col,.highlight,.split{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.stills-grid,.design-grid{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr 1fr}}
+    @media (max-width:720px){.container{width:min(var(--max),calc(100% - 24px))}.hero{min-height:auto}.hero-inner{padding:94px 0 34px 8px}.meta,.stills-grid,.steps,.split,.design-grid{grid-template-columns:1fr}section{padding:54px 0}.footer-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+<style>
+/* Mobile-first presentation refinements */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{overflow-x:hidden}
+img,video,iframe{max-width:100%}
+a,button{touch-action:manipulation}
+.bili-embed{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#0b0b0f;border:1px solid rgba(255,255,255,.12)}
+.bili-embed.vertical{aspect-ratio:9/16;max-width:390px;margin-inline:auto}
+.bili-embed iframe{width:100%;height:100%;display:block;border:0}
+.bili-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0 0}
+.bili-watch{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:999px;background:#e6397c;color:white!important;font-weight:650;text-decoration:none!important}
+.bili-note{font-size:13px;line-height:1.65;opacity:.8}
+@media(max-width:720px){
+ :root{--radius:17px}
+ body{font-size:15px;line-height:1.7}
+ .container{width:calc(100% - 28px)!important}
+ .nav{gap:12px;flex-wrap:wrap;padding:12px 0}
+ .brand{font-size:12px;letter-spacing:.1em}
+ .brand strong{font-size:16px}
+ .links{display:flex;flex-wrap:wrap;gap:9px 13px}
+ .links a,.lang-btn{font-size:12px}
+ h1{font-size:clamp(30px,8vw,48px)!important;line-height:1.15}
+ h2{font-size:clamp(23px,6vw,32px)!important;line-height:1.2}
+ h3{font-size:20px!important}
+ p{overflow-wrap:anywhere}
+ .hero{min-height:auto!important}
+ .hero-inner,.two-col,.split,.highlight,.about,.credits,.grid-2,.report-grid{grid-template-columns:minmax(0,1fr)!important}
+ .panel,.about-card{padding:20px!important}
+ .featured{grid-template-columns:minmax(0,1fr)!important}
+ .video-wrap{width:100%;overflow:hidden}
+ .video-wrap video{width:100%}
+ .bili-embed{border-radius:12px}
+ .bili-actions{flex-direction:column;align-items:stretch}
+ .bili-watch{width:100%}
+ .bili-embed.vertical{max-width:min(100%,340px)}
+ #about .about{grid-template-columns:minmax(0,1fr)!important}
+ #about .photo-box{max-width:100%!important}
+ #about .photo-box img{width:100%!important;height:auto!important;object-fit:contain!important}
+}
+@media(max-width:390px){.container{width:calc(100% - 24px)!important}.panel,.about-card{padding:16px!important}}
+</style></head>
+<body>
+<header class="header">
+<div class="container nav">
+<a class="brand" href="index.html">PORTFOLIO / THE WALL</a>
+<div class="links">
+<a class="btn" href="index.html"><span class="lang-cn">返回首页</span><span class="lang-en">Back Home</span></a>
+<a class="btn primary" href="https://www.bilibili.com/video/BV1Zqn76YEjM/" rel="noopener noreferrer" target="_blank"><span class="lang-cn">打开原视频</span><span class="lang-en">Open Original Video</span></a>
+<button class="lang-btn" id="langToggle">中 / EN</button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="container hero-inner">
+<div>
+<div class="eyebrow">AI-ASSISTED SHORT / STORYBOARD · KEYFRAMES · DESIGN</div>
+<h1>The Wall / 墙</h1>
+<p class="sub">
+<span class="lang-cn">一个以 AI 辅助完成的小说改编废土叙事项目，包含部分分镜脚本、生图关键帧、角色与道具设计，以及完整视频。项目重点放在女主 Eva 的关键帧与角色设计上，以她作为世界观情绪和审美气质的核心入口。</span>
+<span class="lang-en">An AI-assisted post-apocalyptic novel adaptation including storyboard scripting, generated keyframes, character and prop design, and a completed video. The page foregrounds Eva's keyframes and character design as the project's emotional and visual core.</span>
+</p>
+<div class="chips">
+<span class="chip">Novel Adaptation</span>
+<span class="chip">Storyboard Script</span>
+<span class="chip">Keyframe Generation</span>
+<span class="chip">Character Design</span>
+<span class="chip">Prop Design</span>
+</div>
+<div class="meta">
+<div class="cell"><span>Duration</span><strong>3:05</strong></div>
+<div class="cell"><span>Format</span><strong><span class="lang-cn">分镜脚本 / 关键帧 / 设计稿 / 完整视频</span><span class="lang-en">Storyboard / Keyframes / Design Sheets / Full Video</span></strong></div>
+<div class="cell"><span>Focus</span><strong><span class="lang-cn">女主关键帧、角色设计、废土氛围</span><span class="lang-en">Heroine keyframes, character design, wasteland mood</span></strong></div>
+</div>
+</div>
+<aside class="hero-note">
+<h3><span class="lang-cn">本页重点</span><span class="lang-en">Page Focus</span></h3>
+<p><span class="lang-cn">项目以末世环境中的人物行动为叙事线索，依次呈现成片、Eva角色设定、关键帧、小说改编与分镜、道具及环境设计。镜头通过冷暖色温变化、废墟空间的纵深构图与人物运动节奏建立紧张感；角色造型与道具细节共同维持场景的视觉连续性。</span><span class="lang-en">The project follows its characters through a post-apocalyptic setting, presenting the film, Eva’s character design, keyframes, adaptation and storyboards, then props and environment design. Color-temperature contrast, spatial depth and movement rhythm shape the tension, while character and prop details support visual continuity.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">成片</span><span class="lang-en">Film</span></h2>
+<p><span class="lang-cn">页面中直接嵌入完整视频，时长约 3 分 05 秒。若浏览器环境不能正常播放，可点击顶部按钮打开原始视频文件。</span><span class="lang-en">The full film is embedded below with a running time of about 3:05. If playback is limited in your browser, open the original file from the top button.</span></p>
+</div>
+<div class="bili-player-block"><div class="bili-embed"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://player.bilibili.com/player.html?bvid=BV1Zqn76YEjM&amp;page=1&amp;high_quality=1" title="The Wall / 墙 — Bilibili"></iframe></div><div class="bili-actions"><a class="bili-watch" href="https://www.bilibili.com/video/BV1Zqn76YEjM/" rel="noopener noreferrer" target="_blank">在 B站观看完整视频 / Watch on Bilibili</a><span class="bili-note">如内嵌播放器无法加载，请点击按钮跳转至 B站。</span></div></div>
+</div>
+</section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">项目概述</span><span class="lang-en">Overview</span></h3>
+<p><span class="lang-cn">《The Wall / 墙》呈现出明显的末世废土设定：破败城市、残垣断壁、简陋营地、机械威胁，以及围绕巨型“墙”展开的秩序划分。现有分镜脚本中已经建立了从宏观环境、人物奔逃到手部细节与喘息节奏的镜头递进，说明这个项目不是单纯生图集合，而是围绕叙事节奏推进的视频化创作。</span><span class="lang-en">The Wall builds a clear post-apocalyptic world of ruined cities, makeshift camps, mechanical threats, and a giant dividing wall. The storyboard script already structures the project from macro environment shots to running, object close-ups, and breath-paced detail beats, showing a narrative film approach rather than a loose image collection.</span></p>
+<p><span class="lang-cn">从作品集角度，这个项目最适合被定位为“小说改编驱动的世界观短片练习”：一方面展示你能从文本出发搭建分镜与关键帧，另一方面也展示你能把角色设计、道具设计和完整视频组织成统一的视觉系统。</span><span class="lang-en">For portfolio positioning, this works best as a novel-adaptation-driven worldbuilding short: it demonstrates how you move from text to storyboard and keyframes, while organizing character design, prop design, and finished video into one cohesive visual system.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">我的职责与工作内容</span><span class="lang-en">My Responsibilities</span></h3>
+<p>• <span class="lang-cn">负责基于小说进行文本提炼、分镜脚本整理与镜头设计，先把文本转化为可执行的叙事段落与镜头逻辑。</span><span class="lang-en">I handled text adaptation, storyboard scripting, and shot design, first translating the source material into executable narrative beats and shot logic.</span></p>
+<p>• <span class="lang-cn">负责中期场景设计与关键帧创作，建立统一美术标准，保证废土世界观、人物状态与镜头气质保持稳定。</span><span class="lang-en">I handled mid-production scene design and keyframe creation, establishing unified art standards to keep the wasteland world, character state, and cinematic tone consistent.</span></p>
+<p>• <span class="lang-cn">根据镜头与情绪需求优化 AI 提示词，推进角色设定、道具设计、场景氛围与关键帧画面的生成控制。</span><span class="lang-en">I optimized AI prompts according to shot and emotional needs, guiding the generation of character design, props, scene atmosphere, and keyframes.</span></p>
+<p>• <span class="lang-cn">参与角色比例、动作逻辑与镜头连贯性的统一控制，并输出可直接进入视频生成与后期剪辑的标准化素材。</span><span class="lang-en">I controlled character proportions, motion logic, and shot continuity, while delivering standardized assets ready for video generation and post-editing.</span></p>
+<p>• <span class="lang-cn">负责视频生成、节奏整合、剪辑与音乐/声音的最终表达，使项目从设定稿推进为完整短片。</span><span class="lang-en">I handled video generation, rhythm integration, editing, and the final music/sound expression, turning the design pipeline into a complete short film.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container split">
+<article class="card">
+<h4><span class="lang-cn">导演向拆解</span><span class="lang-en">Directorial Framing</span></h4>
+<p><span class="lang-cn">如果把这个项目作为导演向案例来讲，它最有价值的地方不只是“做出了一支视频”，而是你如何从小说里提炼可视化信息，再通过分镜、关键帧和设计稿逐步把抽象文本变成有节奏、有情绪推进的影像。它说明你在做的不是孤立的生成，而是从叙事逻辑出发组织视觉、角色关系和镜头顺序。</span><span class="lang-en">As a directorial case study, the project's value lies not only in producing a finished video, but in how abstract literary material is translated into pacing, character relations, and visual sequence through boards, keyframes, and design sheets.</span></p>
+</article>
+<article class="card">
+<h4><span class="lang-cn">镜头与视觉系统</span><span class="lang-en">Shot Language &amp; Visual System</span></h4>
+<p><span class="lang-cn">项目的镜头气质很明确：宏观废墟建立空间压迫，中近景人物特写承接情绪，低角度奔跑镜头强化逃亡感，篝火场景则给出人物关系的短暂停顿。冷蓝环境、暖色火光、破旧头盔、改装车辆与机械狼共同构成了统一的废土世界观。</span><span class="lang-en">The shot language is clear: wide ruins create spatial oppression, medium-close portraits carry emotion, low-angle running frames intensify escape, and firelit camp scenes create brief pauses in tension. Cool blue ruins, warm firelight, the worn helmet, modified van, and mechanical wolf all reinforce one cohesive wasteland system.</span></p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">女主重点</span><span class="lang-en">Heroine Focus</span></h2>
+<p><span class="lang-cn">Eva 的角色设计与关键帧重点展示人物外形、服装细节及不同镜头中的视觉一致性。</span><span class="lang-en">Eva’s designs and keyframes focus on her silhouette, costume details and continuity across shots.</span></p>
+</div>
+<div class="highlight">
+<div class="focus-visual"><img alt="Eva keyframe close-up" src="assets/the-wall/eva-closeup.jpg"/></div>
+<article class="panel">
+<h3><span class="lang-cn">Eva：情绪入口与视觉锚点</span><span class="lang-en">Eva: Emotional Entry &amp; Visual Anchor</span></h3>
+<p><span class="lang-cn">Eva 的近景关键帧具有非常强的项目辨识度：破旧头盔、低饱和服装、微暖火光、黑暗背景与直视镜头的脆弱感，共同构成了这个项目最有记忆点的人物瞬间。它既能代表废土世界的质感，也能在首页或项目页中立刻建立观众的情绪连接。</span><span class="lang-en">Eva's close-up keyframe is highly memorable: the worn helmet, muted clothing, warm firelight, dark background, and fragile direct gaze create the most iconic emotional moment of the project. It captures both the tactile worldbuilding and the human core of the story.</span></p>
+<p><span class="lang-cn">她的角色三视图则进一步稳定了身份信息：头盔比例、松垮针织上衣、裤装轮廓、腰间与肩部配件、胸前发光装置，都是后续关键帧和视频生成中维持一致性的核心锚点。</span><span class="lang-en">Her turnaround sheet stabilizes identity across production: helmet proportion, oversized knitwear, trouser silhouette, strap accessories, and chest light module all serve as continuity anchors for later keyframes and video generation.</span></p>
+</article>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">关键帧与氛围</span><span class="lang-en">Keyframes &amp; Mood</span></h2>
+<p><span class="lang-cn">这一组最终画面展示了《The Wall / 墙》的核心气质：冷暖对比、末世废墟、奔逃感与短暂的人物停顿。</span><span class="lang-en">These final images define the project's tone through warm/cool contrast, urban ruins, chase energy, and short moments of human pause.</span></p>
+</div>
+<div class="stills-grid">
+<article class="still"><img alt="Solal close-up" src="assets/the-wall/solal-closeup.jpg"/><div class="copy"><h4><span class="lang-cn">男主关键帧</span><span class="lang-en">Male Lead Keyframe</span></h4><p><span class="lang-cn">索拉尔的侧脸被火光勾亮，保持了少年生存者的敏感与警惕，也与 Eva 的近景形成角色关系上的互补。</span><span class="lang-en">Solal's firelit side profile complements Eva's close-up, presenting a younger survivor energy marked by alertness and restraint.</span></p></div></article>
+<article class="still"><img alt="Camp environment still" src="assets/the-wall/camp-still.jpg"/><div class="copy"><h4><span class="lang-cn">营地环境关键帧</span><span class="lang-en">Camp Environment Keyframe</span></h4><p><span class="lang-cn">篝火暖光与室外冷蓝废墟形成鲜明对比，让项目在危机之外拥有一瞬间的人物关系和叙事温度。</span><span class="lang-en">The fire's warmth against the blue ruined city creates a brief emotional shelter within the larger tension of the wasteland.</span></p></div></article>
+<article class="still"><img alt="Chase keyframe" src="assets/the-wall/chase-still.jpg"/><div class="copy"><h4><span class="lang-cn">追逐镜头关键帧</span><span class="lang-en">Chase Keyframe</span></h4><p><span class="lang-cn">低角度跟拍和夕阳废墟带来极强的运动势能，是最适合用来表现镜头设计与视频生成控制力的一张图。</span><span class="lang-en">The low tracking angle and sunset ruins make this the strongest frame for showing motion design and image-to-video control.</span></p></div></article>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">从小说到视频的流程</span><span class="lang-en">From Novel to Video</span></h2>
+<p><span class="lang-cn">从原作文本提取情节节点，转化为分镜、角色场景设定与关键画面，再通过动画镜头、剪辑和后期合成形成完整影像。</span><span class="lang-en">Story beats are adapted into storyboards, character and environment designs, and key images, then developed into animated shots, editing and compositing.</span></p>
+</div>
+<div class="steps">
+<div class="step"><small>01</small><strong><span class="lang-cn">文本提炼</span><span class="lang-en">Text Adaptation</span></strong><p><span class="lang-cn">从小说中提取世界观、人物关系和情绪节点，确定镜头要讲什么。</span><span class="lang-en">Extracting worldbuilding, relationships, and emotional beats from the novel.</span></p></div>
+<div class="step"><small>02</small><strong><span class="lang-cn">分镜脚本</span><span class="lang-en">Storyboard Script</span></strong><p><span class="lang-cn">把环境建立、奔逃、手部特写与呼吸节奏拆成可执行镜头。</span><span class="lang-en">Turning environment, running, object close-ups, and breathing rhythm into filmable shots.</span></p></div>
+<div class="step"><small>03</small><strong><span class="lang-cn">角色 / 道具设计</span><span class="lang-en">Design Sheets</span></strong><p><span class="lang-cn">先建立角色和道具的比例、服装、功能与识别点，保证世界观的基础统一。</span><span class="lang-en">Building character and prop identity first so proportion, costume, function, and recognition stay unified.</span></p></div>
+<div class="step"><small>04</small><strong><span class="lang-cn">关键帧生成</span><span class="lang-en">Keyframe Generation</span></strong><p><span class="lang-cn">在角色和道具已经稳定的基础上，再生成承载情绪和镜头气质的关键帧画面。</span><span class="lang-en">Generating emotionally charged keyframes only after characters and props are visually stabilized.</span></p></div>
+<div class="step"><small>05</small><strong><span class="lang-cn">视频生成</span><span class="lang-en">Video Generation</span></strong><p><span class="lang-cn">把分镜、设定和关键帧进一步转化为连续运动影像，形成完整片段。</span><span class="lang-en">Turning boards, designs, and keyframes into continuous moving sequences.</span></p></div>
+<div class="step"><small>06</small><strong><span class="lang-cn">剪辑与音乐整合</span><span class="lang-en">Editing &amp; Music</span></strong><p><span class="lang-cn">通过剪辑节奏、镜头衔接和音乐/声音加入，完成最终视频表达。</span><span class="lang-en">Finalizing the work through editing rhythm, shot transitions, and music/sound integration.</span></p></div>
+</div>
+</div>
+</section>
+<section>
+<div class="container split">
+<article class="card" style="padding:0;overflow:hidden">
+<img alt="Storyboard script page" src="assets/the-wall/wall-storyboard.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover"/>
+</article>
+<article class="card">
+<h4><span class="lang-cn">分镜脚本页</span><span class="lang-en">Storyboard Script Page</span></h4>
+<p><span class="lang-cn">这页分镜脚本用文字和草图说明了从末世开场、脚步声特写、废墟奔跑到物件细节和呼吸节奏的镜头安排，同时也明确建立了“墙内 / 墙外”的世界结构。它非常适合放在过程页中，强调你不是只做成片，而是能把小说内容拆解成镜头语言。</span><span class="lang-en">This page combines text and rough panels to structure the opening wasteland panorama, footsteps, running through ruins, object close-ups, and breath-driven pacing, while defining the inside/outside logic of the wall. It is ideal for your process section because it proves you can translate literature into shot language.</span></p>
+<p class="editable" contenteditable="true" data-key="wall-story-extra"><span class="lang-cn">制作方法：先提炼故事中的人物目标与环境冲突，再以场景建立、人物奔逃、道具特写和短暂停顿组织镜头。分镜阶段确定画面构图、镜头衔接与昼夜变化，随后使用 Seedance 2.0 进行AI视频生成，并通过剪辑与后期整合保持叙事连续性。</span><span class="lang-en">Workflow: The story is translated into establishing shots, character movement, prop close-ups and moments of pause. Storyboards define composition, transitions and day/night changes. AI video is generated with Seedance 2.0, followed by editing and post-production to maintain narrative continuity.</span></p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">角色与道具设计</span><span class="lang-en">Character &amp; Prop Design</span></h2>
+<p><span class="lang-cn">角色轮廓、服装和道具设计与末世环境保持一致，以造型、材质和比例关系建立统一的视觉语言。</span><span class="lang-en">Character silhouettes, costumes and props share a visual language with the post-apocalyptic setting through consistent forms, materials and proportions.</span></p>
+</div>
+<div class="design-grid">
+<article class="card"><img alt="Eva character sheet" src="assets/the-wall/eva-design.jpg"/><div class="copy"><h4><span class="lang-cn">女主三视图</span><span class="lang-en">Eva Turnaround</span></h4><p><span class="lang-cn">女主的设计最适合作为本项目角色部分的主图，既清晰又有辨识度，也是后续关键帧统一的基础。</span><span class="lang-en">Eva's turnaround is the best lead image for the character-design section and a strong basis for continuity.</span></p></div></article>
+<article class="card"><img alt="Solal character sheet" src="assets/the-wall/solal-design.jpg"/><div class="copy"><h4><span class="lang-cn">男主三视图</span><span class="lang-en">Solal Turnaround</span></h4><p><span class="lang-cn">索拉尔的服装结构、工具包和整体少年体态，强化了他作为废土生存者的角色定位。</span><span class="lang-en">Solal's clothing construction, tool bag, and youthful stance define him clearly as a survivor.</span></p></div></article>
+<article class="card"><img alt="Adult male character sheet" src="assets/the-wall/adult-male-design.jpg"/><div class="copy"><h4><span class="lang-cn">成年男性设定</span><span class="lang-en">Adult Male Design</span></h4><p><span class="lang-cn">更粗粝、更沉重的装备语言让第三位角色与两位年轻角色形成代际和经验上的对比。</span><span class="lang-en">The heavier, rougher survival gear contrasts him against the younger leads in age and experience.</span></p></div></article>
+<article class="card"><img alt="News van design" src="assets/the-wall/news-van-design.jpg"/><div class="copy"><h4><span class="lang-cn">新闻车多视图</span><span class="lang-en">News Van Prop Sheet</span></h4><p><span class="lang-cn">这辆改装新闻车极具废土识别度，卫星锅、太阳能板与破旧车身共同构成了场景叙事的延伸。</span><span class="lang-en">The modified news van extends the narrative world through its satellite dish, solar panels, and worn survival aesthetic.</span></p></div></article>
+<article class="card"><img alt="Mechanical wolf design" src="assets/the-wall/mechanical-wolf-design.jpg"/><div class="copy"><h4><span class="lang-cn">机械狼设计</span><span class="lang-en">Mechanical Wolf Design</span></h4><p><span class="lang-cn">带尺寸标注的机械狼既像敌对生物又像工业装置，能明显提升项目的类型强度与威胁感。</span><span class="lang-en">The mechanical wolf, complete with dimensional labeling, intensifies the project's threat level and genre identity.</span></p></div></article>
+<article class="card"><img alt="Chase still repeated" src="assets/the-wall/chase-still.jpg"/><div class="copy"><h4><span class="lang-cn">动作镜头参考</span><span class="lang-en">Action Shot Reference</span></h4><p><span class="lang-cn">这一动作画面通过人物运动方向、废墟空间和镜头构图呈现追逐过程，呼应前期角色设定与末世环境设计。</span><span class="lang-en">This action frame connects character movement, ruined environments and shot composition, bringing the character design into the chase sequence.</span></p></div></article>
+</div>
+</div>
+</section>
+</main>
+<div class="container footer">
+<div class="footer-inner">
+<div><span class="lang-cn">《The Wall / 墙》现作为首页首个主推荐大卡展示，并明确归类为 AI 辅助导演向短片案例页。</span><span class="lang-en">The Wall now appears as the homepage's primary large featured card and is clearly categorized as an AI-assisted director-oriented short-film case study.</span></div>
+<a class="btn" href="index.html"><span class="lang-cn">回到首页</span><span class="lang-en">Back to Home</span></a>
+</div>
+</div>
+<script>
+    const body=document.body;
+    document.getElementById('langToggle').addEventListener('click',()=>body.classList.toggle('lang-en'));
+    document.querySelectorAll('[data-key]').forEach(el=>{
+      const key='portfolio_'+el.dataset.key;
+      const saved=localStorage.getItem(key);
+      if(saved) el.innerHTML=saved;
+      if(el.isContentEditable){
+        el.addEventListener('input',()=>localStorage.setItem(key,el.innerHTML));
+      }
+    });
+  </script>
+</body>
+</html>

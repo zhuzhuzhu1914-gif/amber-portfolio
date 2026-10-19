@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Black Mountain — Project Page</title>
+<style>
+    :root{
+      --bg:#1A1A1D;--bg-soft:#111218;--panel:#1e1e25;--line:rgba(255,255,255,.1);--text:#f5f5f2;--muted:#a7a9b4;--red:#E6397C;--red2:#ff5a95;--shadow:0 24px 70px rgba(0,0,0,.35);--radius:22px;--max:1200px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#141416,#1A1A1D);color:var(--text)}
+    a{text-decoration:none;color:inherit} img,video{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .header{position:sticky;top:0;z-index:60;backdrop-filter:blur(18px);background:rgba(20,20,23,.56);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:14px;flex-wrap:wrap}
+    .brand{font-size:14px;letter-spacing:.22em;text-transform:uppercase}
+    .links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:.25s ease;font-size:14px;background:transparent;color:#fff;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.24)}
+    .btn.primary{background:var(--red);border-color:var(--red)}
+    .btn.primary:hover{background:var(--red2);border-color:var(--red2)}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,.12);padding:9px 12px;border-radius:999px;color:#d6d7de;cursor:pointer}
+    .hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.72)),linear-gradient(90deg,rgba(4,4,7,.9) 0%, rgba(4,4,7,.62) 45%, rgba(4,4,7,.25) 100%);z-index:1}
+    .hero-bg{position:absolute;inset:0;background:url('assets/cover.jpg') center/cover no-repeat;transform:scale(1.02)}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:120px 0 54px clamp(38px,6vw,108px);display:grid;grid-template-columns:1.02fr .98fr;gap:24px;align-items:end}
+    .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d8d9df}
+    h1{font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-.04em;margin:16px 0 16px}
+    .sub{font-size:18px;color:#dfe1e9;line-height:1.7;max-width:680px;margin:0 0 20px}
+    .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .meta .cell,.panel,.still,.step,.card{background:rgba(10,10,14,.45);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow)}
+    .meta .cell{padding:18px}
+    .meta span{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9da1af;margin-bottom:8px}
+    .meta strong{font-size:17px;line-height:1.65}
+    .hero-note{padding:22px;background:rgba(10,10,14,.56);border:1px solid rgba(255,255,255,.08);border-radius:24px;box-shadow:var(--shadow)}
+    .hero-note h3{margin:0 0 10px;font-size:22px}
+    .hero-note p{margin:0;color:#c7cad4;line-height:1.85}
+    section{padding:88px 0}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}
+    .section-head h2{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.03em;line-height:1.05}
+    .section-head p{max-width:620px;margin:0;color:var(--muted);line-height:1.85}
+    .video-wrap{overflow:hidden;border-radius:26px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    video{width:100%;height:auto;background:#000}
+    .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    .panel{padding:28px}
+    .panel h3{margin:0 0 14px;font-size:26px}
+    .panel p{margin:0 0 14px;color:var(--muted);line-height:1.9}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(230,57,124,.12);border:1px solid rgba(230,57,124,.34);color:#ffcbdc;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .stills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .still{overflow:hidden}
+    .still img{width:100%;aspect-ratio:16/10;object-fit:cover}
+    .still .copy{padding:18px}
+    .still h4{margin:0 0 8px;font-size:20px}
+    .still p{margin:0;color:var(--muted);line-height:1.8;font-size:14px}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{padding:22px}
+    .step small{display:block;color:#8f94a2;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+    .step strong{display:block;font-size:18px;margin-bottom:10px}
+    .step p{margin:0;color:var(--muted);line-height:1.8;font-size:14px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .card{padding:24px}
+    .card h4{margin:0 0 10px;font-size:20px}
+    .card p{margin:0;color:var(--muted);line-height:1.9}
+    .process-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+    .process-grid .card{padding:0;overflow:hidden}
+    .process-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
+    .process-grid .copy{padding:18px}
+    .credits{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .editable{outline:none;border-radius:8px;transition:.2s ease}
+    .editable:focus{box-shadow:0 0 0 1px rgba(230,57,124,.5);background:rgba(230,57,124,.06)}
+    .lang-en{display:none}
+    body.lang-en .lang-cn{display:none}
+    body.lang-en .lang-en{display:unset}
+    .footer{padding:24px 0 40px;color:#989da8}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid rgba(255,255,255,.07);padding-top:20px}
+    .float{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:88}
+    .float button{padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(9,9,13,.75);color:#fff;backdrop-filter:blur(18px);cursor:pointer}
+    @media (max-width:1100px){.hero-inner,.two-col,.split,.credits{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.process-grid{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr 1fr}}
+    @media (max-width:720px){.container{width:min(var(--max),calc(100% - 24px))}.hero{min-height:auto}.hero-inner{padding:94px 0 34px 8px}.meta,.stills-grid,.steps,.split,.process-grid,.credits{grid-template-columns:1fr}section{padding:68px 0}.footer-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+<style>
+/* Mobile-first presentation refinements */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{overflow-x:hidden}
+img,video,iframe{max-width:100%}
+a,button{touch-action:manipulation}
+.bili-embed{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#0b0b0f;border:1px solid rgba(255,255,255,.12)}
+.bili-embed.vertical{aspect-ratio:9/16;max-width:390px;margin-inline:auto}
+.bili-embed iframe{width:100%;height:100%;display:block;border:0}
+.bili-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0 0}
+.bili-watch{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:999px;background:#e6397c;color:white!important;font-weight:650;text-decoration:none!important}
+.bili-note{font-size:13px;line-height:1.65;opacity:.8}
+@media(max-width:720px){
+ :root{--radius:17px}
+ body{font-size:15px;line-height:1.7}
+ .container{width:calc(100% - 28px)!important}
+ .nav{gap:12px;flex-wrap:wrap;padding:12px 0}
+ .brand{font-size:12px;letter-spacing:.1em}
+ .brand strong{font-size:16px}
+ .links{display:flex;flex-wrap:wrap;gap:9px 13px}
+ .links a,.lang-btn{font-size:12px}
+ h1{font-size:clamp(30px,8vw,48px)!important;line-height:1.15}
+ h2{font-size:clamp(23px,6vw,32px)!important;line-height:1.2}
+ h3{font-size:20px!important}
+ p{overflow-wrap:anywhere}
+ .hero{min-height:auto!important}
+ .hero-inner,.two-col,.split,.highlight,.about,.credits,.grid-2,.report-grid{grid-template-columns:minmax(0,1fr)!important}
+ .panel,.about-card{padding:20px!important}
+ .featured{grid-template-columns:minmax(0,1fr)!important}
+ .video-wrap{width:100%;overflow:hidden}
+ .video-wrap video{width:100%}
+ .bili-embed{border-radius:12px}
+ .bili-actions{flex-direction:column;align-items:stretch}
+ .bili-watch{width:100%}
+ .bili-embed.vertical{max-width:min(100%,340px)}
+ #about .about{grid-template-columns:minmax(0,1fr)!important}
+ #about .photo-box{max-width:100%!important}
+ #about .photo-box img{width:100%!important;height:auto!important;object-fit:contain!important}
+}
+@media(max-width:390px){.container{width:calc(100% - 24px)!important}.panel,.about-card{padding:16px!important}}
+</style></head>
+<body>
+<header class="header">
+<div class="container nav">
+<a class="brand" href="index.html">PORTFOLIO / BLACK MOUNTAIN</a>
+<div class="links">
+<a class="btn" href="index.html"><span class="lang-cn">返回首页</span><span class="lang-en">Back Home</span></a>
+<a class="btn primary" href="https://www.bilibili.com/video/BV1ozn76wEvc/" rel="noopener noreferrer" target="_blank"><span class="lang-cn">打开原视频</span><span class="lang-en">Open Original Video</span></a>
+<button class="lang-btn" id="langToggle">中 / EN</button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="container hero-inner">
+<div>
+<div class="eyebrow">AI-ASSISTED SHORT FILM / SCI-FI THRILLER</div>
+<h1>黑山 / Black Mountain</h1>
+<p class="sub">
+<span class="lang-cn">一部 2 分 36 秒的 AI 辅助科幻惊悚短片。我负责镜头分镜设计、氛围控制、AI 图像生成、Seedance 2.0 图生视频，以及最终的剪辑、音效与后期整合。</span>
+<span class="lang-en">A 2:36 AI-assisted sci-fi thriller short. I led storyboard design, atmosphere control, AI image generation, Seedance 2.0 image-to-video production, and final editing, sound, and post integration.</span>
+</p>
+<div class="chips">
+<span class="chip">Storyboarding</span>
+<span class="chip">Atmosphere Control</span>
+<span class="chip">ChatGPT Image Gen</span>
+<span class="chip">Seedance 2.0 I2V</span>
+<span class="chip">Editing &amp; Sound</span>
+</div>
+<div class="meta">
+<div class="cell"><span>Duration</span><strong>2:36</strong></div>
+<div class="cell"><span>Genre</span><strong><span class="lang-cn">剧情 / 惊悚 / 悬疑 / 科幻</span><span class="lang-en">Drama / Thriller / Suspense / Sci-Fi</span></strong></div>
+<div class="cell"><span>Focus</span><strong><span class="lang-cn">镜头、氛围、一致性、后期整合</span><span class="lang-en">Shots, atmosphere, consistency, post</span></strong></div>
+</div>
+</div>
+<aside class="hero-note">
+<h3><span class="lang-cn">项目制作重点</span><span class="lang-en">Production Focus</span></h3>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">成片</span><span class="lang-en">Film</span></h2>
+<p><span class="lang-cn">下面直接嵌入项目视频。若网页环境无法直接播放，你也可以点击顶部按钮打开原始视频文件。</span><span class="lang-en">The film is embedded below. If playback is blocked in your environment, use the top button to open the original file.</span></p>
+</div>
+<div class="bili-player-block"><div class="bili-embed"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://player.bilibili.com/player.html?bvid=BV1ozn76wEvc&amp;page=1&amp;high_quality=1" title="Black Mountain / 黑山 — Bilibili"></iframe></div><div class="bili-actions"><a class="bili-watch" href="https://www.bilibili.com/video/BV1ozn76wEvc/" rel="noopener noreferrer" target="_blank">在 B站观看完整视频 / Watch on Bilibili</a><span class="bili-note">如内嵌播放器无法加载，请点击按钮跳转至 B站。</span></div></div>
+</div>
+</section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">项目概述</span><span class="lang-en">Overview</span></h3>
+<p><span class="lang-cn">《黑山》以美国中部森林中的独居伐木工为主角，从日常劳作切入，在低调而压抑的节奏中逐步引出未知威胁。影片通过异响、异常动物反应、窥视感镜头与追逐段落持续累积悬念，并在结尾处揭示主角隐藏的机械身份，使作品从森林惊悚转向具有科幻意味的反转叙事。</span><span class="lang-en">Set around an isolated lumberjack in a forest, *Black Mountain* begins with routine labor and gradually introduces an unknown threat through ominous sound, animal disruption, voyeuristic framing, and a pursuit sequence. The final reveal of the protagonist's mechanical identity reframes the film from woodland horror into a sci-fi twist.</span></p>
+<p><span class="lang-cn">项目重点在于：以镜头语言建立惊悚节奏，以角色与场景锚点保证生成一致性，以最终剪辑与音效完成整支短片的视听整合。</span><span class="lang-en">The project focuses on suspenseful shot design, consistency through character and scene anchoring, and final audio-visual integration through editing and sound.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">我的职责</span><span class="lang-en">My Role</span></h3>
+<p>• <span class="lang-cn">镜头分镜设计与节奏规划</span><span class="lang-en">Storyboard design and shot pacing</span></p>
+<p>• <span class="lang-cn">图片氛围控制与视觉统一</span><span class="lang-en">Atmosphere control and visual unification</span></p>
+<p>• <span class="lang-cn">ChatGPT 生图与 Seedance 2.0 图生视频</span><span class="lang-en">ChatGPT image generation and Seedance 2.0 image-to-video</span></p>
+<p>• <span class="lang-cn">最终剪辑、音效与后期整合</span><span class="lang-en">Final editing, sound, and post integration</span></p>
+<p class="editable" contenteditable="true" data-key="bm-role-extra"><span class="lang-cn">制作流程包括故事与镜头构思、人物和森林环境设定、关键画面设计、AI图像生成、Seedance 2.0图生视频、镜头剪辑及声音与画面整合。项目着重控制悬疑氛围、视觉一致性与镜头节奏。</span><span class="lang-en">The workflow covers story and shot planning, character and forest-environment design, key images, AI image generation, Seedance 2.0 image-to-video, editing, and sound-picture integration, with emphasis on suspense, visual consistency and pacing.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">最终镜头截图</span><span class="lang-en">Final Film Stills</span></h2>
+</div>
+<div class="stills-grid">
+<article class="still"><img alt="Forest establishing shot" src="assets/still-forest.jpg"/><div class="copy"><h4><span class="lang-cn">环境建立镜头</span><span class="lang-en">Environment Establishing Shot</span></h4><p><span class="lang-cn">以高位视角与浓雾森林建立空间尺度和孤立感，是整部作品的世界观入口。</span><span class="lang-en">A high-angle foggy forest shot establishes scale, isolation, and the film's world immediately.</span></p></div></article>
+<article class="still"><img alt="Lumberjack in forest" src="assets/still-lumberjack-wide.jpg"/><div class="copy"><h4><span class="lang-cn">日常中的不安</span><span class="lang-en">Routine Under Threat</span></h4><p><span class="lang-cn">前景遮挡与深林层次让伐木动作带有被注视感，强化危险正在逼近的感觉。</span><span class="lang-en">Foreground obstruction and forest depth give routine labor a watched, threatened quality.</span></p></div></article>
+<article class="still"><img alt="Character close-up" src="assets/still-closeup.jpg"/><div class="copy"><h4><span class="lang-cn">人物细节特写</span><span class="lang-en">Character Close-Up</span></h4><p><span class="lang-cn">皱纹、胡须、工装和帽檐的细节共同支撑了角色可信度与一致性。</span><span class="lang-en">Wrinkles, beard, clothing, and hat wear all support believable character consistency.</span></p></div></article>
+<article class="still"><img alt="Violent reveal" src="assets/still-axe.jpg"/><div class="copy"><h4><span class="lang-cn">暴力反转镜头</span><span class="lang-en">Violent Reveal</span></h4><p><span class="lang-cn">材质冲突与类型反转在这一镜头达到高点，把惊悚推进到科幻异变层面。</span><span class="lang-en">Material contrast and genre escalation push the film from horror into sci-fi transformation.</span></p></div></article>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">工作流</span><span class="lang-en">Workflow</span></h2>
+</div>
+<div class="steps">
+<div class="step"><small>01</small><strong><span class="lang-cn">资产库建立</span><span class="lang-en">Asset Library</span></strong><p><span class="lang-cn">先锁定角色、怪物、森林、木屋与整体风格方向，形成稳定视觉锚点。</span><span class="lang-en">Locking characters, creature, forest, cabin, and overall style as stable anchors.</span></p></div>
+<div class="step"><small>02</small><strong><span class="lang-cn">分镜设计</span><span class="lang-en">Storyboarding</span></strong><p><span class="lang-cn">以叙事节奏为核心设计镜头、运动、停顿与信息揭示顺序。</span><span class="lang-en">Designing shots, movement, pauses, and reveals around narrative rhythm.</span></p></div>
+<div class="step"><small>03</small><strong><span class="lang-cn">关键帧锚点</span><span class="lang-en">Keyframe Anchoring</span></strong><p><span class="lang-cn">关键帧作为智能参考而非机械复刻，稳定人物身份、场景气质与镜头意图。</span><span class="lang-en">Using keyframes as intelligent anchors rather than rigid copies to guide continuity.</span></p></div>
+<div class="step"><small>04</small><strong><span class="lang-cn">图生视频与后期</span><span class="lang-en">I2V &amp; Post</span></strong><p><span class="lang-cn">通过 Seedance 2.0 完成图生视频，并以剪辑、音效和后期整合最终完成短片。</span><span class="lang-en">Generating motion with Seedance 2.0 and completing the film through editing, sound, and post.</span></p></div>
+</div>
+</div>
+</section>
+<section>
+<div class="container split">
+<article class="card">
+<h4><span class="lang-cn">ChatGPT 生图策略</span><span class="lang-en">ChatGPT Image Strategy</span></h4>
+<p><span class="lang-cn">我主要参考预先建立的角色库、角色身份、场景风格，以及手绘分镜和脑中的镜头想象，再加入少量描述让 ChatGPT 在明确边界内进行创造。目标不是机械复制，而是在稳定角色与气质的前提下，保留图像生成的发挥空间。</span><span class="lang-en">I guide ChatGPT image generation with a predefined character library, identity anchors, scene style, hand-drawn boards, and imagined shots, then add minimal description to allow controlled creative expansion rather than rigid reproduction.</span></p>
+</article>
+<article class="card">
+<h4><span class="lang-cn">Seedance 2.0 视频策略</span><span class="lang-en">Seedance 2.0 Video Strategy</span></h4>
+<p><span class="lang-cn">短于 5 秒或动作较少的镜头，我重点控制镜头运动与专业镜头术语；较长镜头则会精确到每秒的运镜、人物站位、动作推进和表演变化，让视频生成更接近导演式控制而不是单镜头碰运气。</span><span class="lang-en">For short or low-motion shots, I focus on camera movement and precise cinematic terms. For longer shots, I describe movement, blocking, action progression, and performance second by second to direct the sequence more intentionally.</span></p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">前期与过程材料</span><span class="lang-en">Process Materials</span></h2>
+</div>
+<div class="process-grid">
+<article class="card"><img alt="Storyboard page 1" src="assets/storyboard-1.jpg"/><div class="copy"><h4><span class="lang-cn">分镜：建立环境</span><span class="lang-en">Storyboard: Establishing</span></h4><p><span class="lang-cn">从小屋、森林到伐木动作，镜头逐步把观众带进危险将要发生的空间。</span><span class="lang-en">The early boards establish cabin, forest, and routine labor before danger appears.</span></p></div></article>
+<article class="card"><img alt="Storyboard page 2" src="assets/storyboard-2.jpg"/><div class="copy"><h4><span class="lang-cn">分镜：异常与误判</span><span class="lang-en">Storyboard: Omen &amp; Misdirection</span></h4><p><span class="lang-cn">白影掠过、兔子异变和表情特写共同推进悬念。</span><span class="lang-en">Passing white forms, the rabbit beat, and facial close-ups all build suspense.</span></p></div></article>
+<article class="card"><img alt="Storyboard page 3" src="assets/storyboard-3.jpg"/><div class="copy"><h4><span class="lang-cn">分镜：袭击节奏</span><span class="lang-en">Storyboard: Attack Rhythm</span></h4><p><span class="lang-cn">快速特写和撞击感镜头用于提升惊吓强度。</span><span class="lang-en">Fast close-ups and impact framing intensify the scare and action rhythm.</span></p></div></article>
+<article class="card"><img alt="Lumberjack design" src="assets/character-lumberjack.jpg"/><div class="copy"><h4><span class="lang-cn">角色设定：伐木工</span><span class="lang-en">Character Sheet: Lumberjack</span></h4><p><span class="lang-cn">宽檐帽、络腮胡、格纹衬衫与工装构成了角色一致性的核心锚点。</span><span class="lang-en">Hat, beard, plaid shirt, and workwear act as the core anchors for consistency.</span></p></div></article>
+<article class="card"><img alt="Lumberjack damaged sheet" src="assets/character-lumberjack-damaged.jpg"/><div class="copy"><h4><span class="lang-cn">状态变化：机械暴露</span><span class="lang-en">State Change: Mechanical Reveal</span></h4><p><span class="lang-cn">同一角色在剧情后期的状态延续，为结尾反转提供设计支撑。</span><span class="lang-en">An alternate state sheet supports the late-film reveal while preserving continuity.</span></p></div></article>
+<article class="card"><img alt="Creature design" src="assets/character-creature.jpg"/><div class="copy"><h4><span class="lang-cn">角色设定：怪物</span><span class="lang-en">Character Sheet: Creature</span></h4><p><span class="lang-cn">超长手臂、黑色眼部和灰白皮肤帮助怪物在不同镜头中保持稳定识别。</span><span class="lang-en">Elongated arms, black eyes, and pale skin keep the creature recognizable across shots.</span></p></div></article>
+</div>
+</div>
+</section>
+<section>
+<div class="container credits">
+<article class="card">
+<h4><span class="lang-cn">项目亮点</span><span class="lang-en">Highlights</span></h4>
+<p><span class="lang-cn">这部片最值得强调的是：它已经不是零散的 AI 片段，而是一个具备完整起承转合、类型氛围、镜头设计、一致性控制与声音整合的短片作品。它既能展示视觉完成度，也能展示你如何把 AI 工具组织成导演向创作流程。</span><span class="lang-en">The key strength here is that this is no longer a collection of AI shots, but a complete short film with suspense structure, atmospheric control, shot design, consistency management, and sound integration—showing both visual finish and directorial workflow.</span></p>
+</article>
+<article class="card">
+<h4><span class="lang-cn">视觉与声音设计</span><span class="lang-en">Visual and Sound Design</span></h4>
+<p class="editable" contenteditable="true" data-key="bm-fill-block"><span class="lang-cn">通过森林空间的层次、低照度光影与人物运动安排建立不安感；剪辑中交替使用环境镜头和人物镜头，让观众逐步感知场景中的威胁。声音与画面的配合服务于悬疑节奏，最终形成完整的短片叙事。AI视频生成使用 Seedance 2.0。</span><span class="lang-en">Layered forest spaces, low-key lighting and character movement build unease. Editing alternates environmental and character shots to reveal the threat gradually, while sound-picture integration supports suspense pacing. AI video generation uses Seedance 2.0.</span></p>
+</article>
+</div>
+</section>
+</main>
+<div class="container footer">
+<div class="footer-inner">
+<div><span class="lang-cn">《黑山》现作为首页第二推荐卡展示，并明确归类为 AI 辅助短片项目。</span><span class="lang-en">Black Mountain now appears as the homepage's secondary recommendation card and is clearly categorized as an AI-assisted short-film project.</span></div>
+<a class="btn" href="index.html"><span class="lang-cn">回到首页</span><span class="lang-en">Back to Home</span></a>
+</div>
+</div>
+<div class="float"><button><span class="lang-cn">文本自动本地保存</span><span class="lang-en">Text auto-saves locally</span></button></div>
+<script>
+    const body = document.body;
+    document.getElementById('langToggle').addEventListener('click',()=> body.classList.toggle('lang-en'));
+    document.querySelectorAll('[data-key]').forEach(el=>{
+      const key = 'portfolio_' + el.dataset.key;
+      const saved = localStorage.getItem(key);
+      if(saved) el.innerHTML = saved;
+      if(el.isContentEditable){
+        el.addEventListener('input',()=> localStorage.setItem(key, el.innerHTML));
+      }
+    });
+  </script>
+</body>
+</html>

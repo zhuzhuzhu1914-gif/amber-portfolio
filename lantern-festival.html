@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>元宵灯会 / Lantern Festival — Project Page</title>
+<style>
+    :root{--bg:#1A1A1D;--panel:#1e1e25;--line:rgba(255,255,255,.1);--text:#f5f5f2;--muted:#a7a9b4;--red:#E6397C;--red2:#ff5a95;--shadow:0 24px 70px rgba(0,0,0,.35);--radius:22px;--max:1200px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#141416,#1A1A1D);color:var(--text)}
+    a{text-decoration:none;color:inherit} img,video{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .header{position:sticky;top:0;z-index:60;backdrop-filter:blur(18px);background:rgba(20,20,23,.56);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:14px;flex-wrap:wrap}
+    .brand{font-size:14px;letter-spacing:.22em;text-transform:uppercase}.links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:.25s ease;font-size:14px;background:transparent;color:#fff;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.24)} .btn.primary{background:var(--red);border-color:var(--red)} .btn.primary:hover{background:var(--red2);border-color:var(--red2)}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,.12);padding:9px 12px;border-radius:999px;color:#d6d7de;cursor:pointer}
+    .hero{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.76)),linear-gradient(90deg,rgba(4,4,7,.94) 0%, rgba(4,4,7,.66) 48%, rgba(4,4,7,.18) 100%);z-index:1}
+    .hero-bg{position:absolute;inset:0;background:url('assets/lantern-festival/cover.jpg') center/cover no-repeat;transform:scale(1.03)}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:120px 0 54px clamp(38px,6vw,108px);display:grid;grid-template-columns:1.04fr .96fr;gap:24px;align-items:end}
+    .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d8d9df}
+    h1{font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-.04em;margin:16px 0 16px}
+    .sub{font-size:18px;color:#dfe1e9;line-height:1.8;max-width:720px;margin:0 0 22px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}.chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(230,57,124,.12);border:1px solid rgba(230,57,124,.34);color:#ffcbdc;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .meta .cell,.panel,.still,.card{background:rgba(10,10,14,.45);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow)}
+    .meta .cell{padding:18px}.meta span{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9da1af;margin-bottom:8px}.meta strong{font-size:17px;line-height:1.65}
+    .hero-note{padding:22px;background:rgba(10,10,14,.56);border:1px solid rgba(255,255,255,.08);border-radius:24px;box-shadow:var(--shadow)} .hero-note h3{margin:0 0 10px;font-size:22px}.hero-note p{margin:0;color:#c7cad4;line-height:1.85}
+    section{padding:88px 0}.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}.section-head h2{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.03em;line-height:1.05}.section-head p{max-width:620px;margin:0;color:var(--muted);line-height:1.85}
+    .video-wrap{overflow:hidden;border-radius:26px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)} video{width:100%;height:auto;background:#000}
+    .two-col{display:grid;grid-template-columns:1.08fr .92fr;gap:22px}.panel{padding:28px}.panel h3{margin:0 0 14px;font-size:26px}.panel p{margin:0 0 14px;color:var(--muted);line-height:1.9}
+    .stills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.still{overflow:hidden}.still img{width:100%;aspect-ratio:9/16;object-fit:cover}.still .copy{padding:18px}.still h4{margin:0 0 8px;font-size:20px}.still p{margin:0;color:var(--muted);line-height:1.8;font-size:14px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:24px}.card h4{margin:0 0 10px;font-size:20px}.card p{margin:0;color:var(--muted);line-height:1.9}
+    .report-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.report-grid .card{padding:0;overflow:hidden}.report-grid img{width:100%;aspect-ratio:16/10;object-fit:cover}.report-grid .copy{padding:18px}
+    .lang-en{display:none} body.lang-en .lang-cn{display:none} body.lang-en .lang-en{display:unset}
+    .footer{padding:24px 0 40px;color:#989da8}.footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid rgba(255,255,255,.07);padding-top:20px}
+    @media (max-width:1100px){.hero-inner,.two-col,.split,.report-grid{grid-template-columns:1fr}.stills-grid{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr 1fr}}
+    @media (max-width:720px){.container{width:min(var(--max),calc(100% - 24px))}.hero{min-height:auto}.hero-inner{padding:94px 0 34px 8px}.meta,.stills-grid,.split,.report-grid{grid-template-columns:1fr}section{padding:68px 0}.footer-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+<style>
+/* Mobile-first presentation refinements */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{overflow-x:hidden}
+img,video,iframe{max-width:100%}
+a,button{touch-action:manipulation}
+.bili-embed{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#0b0b0f;border:1px solid rgba(255,255,255,.12)}
+.bili-embed.vertical{aspect-ratio:9/16;max-width:390px;margin-inline:auto}
+.bili-embed iframe{width:100%;height:100%;display:block;border:0}
+.bili-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0 0}
+.bili-watch{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:999px;background:#e6397c;color:white!important;font-weight:650;text-decoration:none!important}
+.bili-note{font-size:13px;line-height:1.65;opacity:.8}
+@media(max-width:720px){
+ :root{--radius:17px}
+ body{font-size:15px;line-height:1.7}
+ .container{width:calc(100% - 28px)!important}
+ .nav{gap:12px;flex-wrap:wrap;padding:12px 0}
+ .brand{font-size:12px;letter-spacing:.1em}
+ .brand strong{font-size:16px}
+ .links{display:flex;flex-wrap:wrap;gap:9px 13px}
+ .links a,.lang-btn{font-size:12px}
+ h1{font-size:clamp(30px,8vw,48px)!important;line-height:1.15}
+ h2{font-size:clamp(23px,6vw,32px)!important;line-height:1.2}
+ h3{font-size:20px!important}
+ p{overflow-wrap:anywhere}
+ .hero{min-height:auto!important}
+ .hero-inner,.two-col,.split,.highlight,.about,.credits,.grid-2,.report-grid{grid-template-columns:minmax(0,1fr)!important}
+ .panel,.about-card{padding:20px!important}
+ .featured{grid-template-columns:minmax(0,1fr)!important}
+ .video-wrap{width:100%;overflow:hidden}
+ .video-wrap video{width:100%}
+ .bili-embed{border-radius:12px}
+ .bili-actions{flex-direction:column;align-items:stretch}
+ .bili-watch{width:100%}
+ .bili-embed.vertical{max-width:min(100%,340px)}
+ #about .about{grid-template-columns:minmax(0,1fr)!important}
+ #about .photo-box{max-width:100%!important}
+ #about .photo-box img{width:100%!important;height:auto!important;object-fit:contain!important}
+}
+@media(max-width:390px){.container{width:calc(100% - 24px)!important}.panel,.about-card{padding:16px!important}}
+</style></head>
+<body>
+<header class="header">
+<div class="container nav">
+<a class="brand" href="index.html">PORTFOLIO / LANTERN FESTIVAL</a>
+<div class="links">
+<a class="btn" href="index.html"><span class="lang-cn">返回首页</span><span class="lang-en">Back Home</span></a>
+<a class="btn primary" href="https://www.bilibili.com/video/BV1Udn76nErZ/" rel="noopener noreferrer" target="_blank"><span class="lang-cn">打开视频</span><span class="lang-en">Open Video</span></a>
+<a class="btn" href="assets/lantern-festival/process-report.pdf" target="_blank"><span class="lang-cn">打开报告</span><span class="lang-en">Open Report</span></a>
+<button class="lang-btn" id="langToggle">中 / EN</button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="container hero-inner">
+<div>
+<div class="eyebrow">AI-ASSISTED SHORT / GUOFENG ROMANCE · VERTICAL VIDEO</div>
+<h1>元宵灯会 / Lantern Festival</h1>
+<p class="sub">
+<span class="lang-cn">一个 AI 辅助完成的国风浪漫叙事短片项目，采用 9:16 竖屏形式，以元宵灯会为背景，通过人物相遇、对视与并肩而行的情绪推进，呈现中式节庆场景中的电影感氛围与角色一致性控制。</span>
+<span class="lang-en">An AI-assisted Guofeng romantic short in 9:16 vertical format, set during a lantern festival. The project uses encounter, eye contact, and walking-together beats to create a cinematic emotional flow, while showcasing atmospheric worldbuilding and character consistency.</span>
+</p>
+<div class="chips">
+<span class="chip">AI Animation Case Study</span>
+<span class="chip">Vertical Video</span>
+<span class="chip">Guofeng Romance</span>
+<span class="chip">Lantern Festival</span>
+<span class="chip">Character Consistency</span>
+</div>
+<div class="meta">
+<div class="cell"><span>Duration</span><strong>0:52</strong></div>
+<div class="cell"><span>Format</span><strong><span class="lang-cn">9:16 竖屏短片 / AI 漫剧案例</span><span class="lang-en">9:16 Vertical Short / AI Animation Case Study</span></strong></div>
+<div class="cell"><span>Focus</span><strong><span class="lang-cn">国风场景、人物对视、情绪氛围、短视频叙事</span><span class="lang-en">Guofeng scenes, emotional gaze, atmosphere, short-form storytelling</span></strong></div>
+</div>
+</div>
+<aside class="hero-note">
+<h3><span class="lang-cn">页面定位</span><span class="lang-en">Page Positioning</span></h3>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">成片</span><span class="lang-en">Film</span></h2>
+<p><span class="lang-cn">视频为竖屏格式，适合移动端观看，也适合作为作品集中短视频叙事、角色一致性和节庆场景氛围控制的案例展示。</span><span class="lang-en">The film is vertical and mobile-friendly, making it suitable for demonstrating short-form storytelling, character consistency, and festive atmosphere control.</span></p>
+</div>
+<div class="bili-player-block"><div class="bili-embed vertical"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://player.bilibili.com/player.html?bvid=BV1Udn76nErZ&amp;page=1&amp;high_quality=1" title="元宵灯会 — Bilibili"></iframe></div><div class="bili-actions"><a class="bili-watch" href="https://www.bilibili.com/video/BV1Udn76nErZ/" rel="noopener noreferrer" target="_blank">在 B站观看完整视频 / Watch on Bilibili</a><span class="bili-note">如内嵌播放器无法加载，请点击按钮跳转至 B站。</span></div></div>
+</div>
+</section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">项目概述</span><span class="lang-en">Overview</span></h3>
+<p><span class="lang-cn">从视频内容来看，这个项目围绕元宵灯会中的一次浪漫偶遇展开：从热闹的灯市远景，到人物在人群中的寻找，再到兔子灯落下、双手相触、人物近景对视，最后回到两人并肩走入灯火之中的收束镜头。整体更接近“AI 辅助漫剧短片 / 视觉化叙事案例”，而不是单纯的国风海报合集。</span><span class="lang-en">Visually, the story unfolds as a romantic encounter during a lantern festival: from wide festival views to crowd-searching, a dropped rabbit lantern, overlapping hands, close-up gazes, and a final walk into the light. It reads as an AI-assisted narrative short rather than a static visual poster series.</span></p>
+<p><span class="lang-cn">画面以暖红、金色灯光和古街夜景为主，利用高密度人群、烟火、灯笼与浅景深构成浓厚的节庆氛围；人物面部、服装和情绪表演则承担主要叙事功能。</span><span class="lang-en">Warm reds, golden lantern light, old-street night scenes, fireworks, and shallow depth of field create a dense festive world, while facial performance, costume detail, and emotional beats carry the narrative.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">过程报告提炼</span><span class="lang-en">Report Highlights</span></h3>
+<p>• <span class="lang-cn">16 页报告中，该项目被标为《元宵灯会》与 “AI Animation Case Study”。</span><span class="lang-en">In the 16-page report, the project is labeled “Lantern Festival” and “AI Animation Case Study.”</span></p>
+<p>• <span class="lang-cn">报告中出现受众与内容策略页，并提到女性受众占比约 85%。</span><span class="lang-en">The report includes an audience/content strategy section and mentions an audience with about 85% female share.</span></p>
+<p>• <span class="lang-cn">报告展示了角色名温姝、陆时宴，以及角色/场景设计、故事设定、视频提示词和关键帧页面。</span><span class="lang-en">The report shows the character names Wen Shu and Lu Shiyan, plus character/scene design, story setup, video prompt pages, and keyframes.</span></p>
+<p>• <span class="lang-cn">因此它很适合被写成“从受众策略到角色设计，再到视频生成”的完整案例页。</span><span class="lang-en">This makes it a strong case-study page spanning audience strategy, design, and video generation.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">画面节奏与情绪节点</span><span class="lang-en">Visual Beats &amp; Emotion</span></h2>
+</div>
+<div class="stills-grid">
+<article class="still"><img alt="Lantern Festival still 1" src="assets/lantern-festival/still-1.jpg"/><div class="copy"><h4><span class="lang-cn">人物寻找</span><span class="lang-en">Searching in the Crowd</span></h4><p><span class="lang-cn">主角在人流中寻找对方，适合强调短视频叙事中的“第一情绪钩子”。</span><span class="lang-en">A crowd-searching moment that works well as the first emotional hook.</span></p></div></article>
+<article class="still"><img alt="Lantern Festival still 2" src="assets/lantern-festival/still-2.jpg"/><div class="copy"><h4><span class="lang-cn">人物近景</span><span class="lang-en">Character Close-Up</span></h4><p><span class="lang-cn">近景特写承担人物识别与情绪传递，也是角色一致性的关键展示位。</span><span class="lang-en">Close-ups carry identity and emotion, and are crucial for showing consistency.</span></p></div></article>
+<article class="still"><img alt="Lantern Festival still 3" src="assets/lantern-festival/still-3.jpg"/><div class="copy"><h4><span class="lang-cn">灯会远景</span><span class="lang-en">Festival Wide Shot</span></h4><p><span class="lang-cn">大远景展示繁华灯市与烟火，强化了项目的国风场景构建能力。</span><span class="lang-en">A large-scale festival shot reinforces scene-building and world richness.</span></p></div></article>
+<article class="still"><img alt="Lantern Festival still 4" src="assets/lantern-festival/still-4.jpg"/><div class="copy"><h4><span class="lang-cn">情绪收束</span><span class="lang-en">Emotional Resolution</span></h4><p><span class="lang-cn">结尾氛围更柔和，适合用来说明短片在情绪上完成了完整闭环。</span><span class="lang-en">The softer final mood helps show a complete emotional arc.</span></p></div></article>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">项目流程</span><span class="lang-en">Process Added from PPT</span></h2>
+</div>
+<div class="report-grid">
+<article class="card"><img alt="Lantern Festival cover slide" src="assets/ppt-process/lantern-cover-slide.jpg"/><div class="copy"><h4><span class="lang-cn">01 封面与项目定位</span><span class="lang-en">01 Cover &amp; Positioning</span></h4><p><span class="lang-cn">《元宵灯会》以“AI Animation Case Study”的方式呈现，主视觉是元宵灯火下的古风相遇场景，适合作为网站封面主视觉。</span><span class="lang-en">PPT page 11 frames Lantern Festival as an “AI Animation Case Study” with an atmospheric meeting under lantern lights, making it a strong website cover visual.</span></p></div></article>
+<article class="card"><img alt="Lantern Festival audience slide" src="assets/ppt-process/lantern-audience-slide.jpg"/><div class="copy"><h4><span class="lang-cn">02 受众与内容策略</span><span class="lang-en">02 Audience &amp; Content Strategy</span></h4><p><span class="lang-cn">项目面向抖音与小红书等短视频平台，以古风浪漫、情绪氛围和中国传统美学吸引核心受众，适合在网页中单独说明项目定位。</span><span class="lang-en">The project is positioned for short-video platforms like Douyin and Xiaohongshu, emphasizing romance, atmosphere, and traditional Chinese aesthetics for its core audience.</span></p></div></article>
+</div>
+</div>
+</section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">过程步骤</span><span class="lang-en">Process Steps</span></h3>
+<p>01 · <span class="lang-cn">故事设定：围绕元宵灯会中的寻找、相遇、对视与并肩离开建立完整的短视频情绪线。</span><span class="lang-en">Story Setting: build a complete emotional line through searching, encounter, gaze, and departure at the lantern festival.</span></p>
+<p>02 · <span class="lang-cn">受众策略：明确项目面向短视频平台，以古风浪漫、沉浸氛围和情感推进作为核心抓手。</span><span class="lang-en">Audience Strategy: target short-video audiences through Guofeng romance, immersive atmosphere, and emotional progression.</span></p>
+<p>03 · <span class="lang-cn">角色设计：明确温姝与陆时宴的人物形象、服装风格、表情状态与动作关系。</span><span class="lang-en">Character Design: define Wen Shu and Lu Shiyan through costume, facial expression, and interaction logic.</span></p>
+<p>04 · <span class="lang-cn">场景与道具：以古街夜市、花灯、兔子灯、烟火和高密度人群建立节庆空间与叙事氛围。</span><span class="lang-en">Scene &amp; Props: build the festive world through an old-street market, lanterns, rabbit lantern, fireworks, and dense crowds.</span></p>
+<p>05 · <span class="lang-cn">AI视频提示词：围绕暖橘/绯红/金黄色调、体积光、唐风现实主义、4K、9:16竖屏撰写生成指令。</span><span class="lang-en">AI Video Prompting: develop prompts around warm orange / crimson / gold lighting, volumetric glow, Tang-style realism, 4K, and 9:16 framing.</span></p>
+<p>06 · <span class="lang-cn">关键帧与成片：先稳定角色与情绪锚点，再生成关键帧、镜头段落与最终竖屏成片。</span><span class="lang-en">Keyframes &amp; Final Film: stabilize character and emotional anchors first, then generate keyframes, shot segments, and the final vertical film.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">可写进网站的个人职责</span><span class="lang-en">Role Framing for the Site</span></h3>
+<p>• <span class="lang-cn">负责中期场景设计与关键帧创作，制定统一美术标准，并根据导演需求优化 AI 提示词。</span><span class="lang-en">Handled mid-production scene design and keyframe creation, setting unified art standards and optimizing prompts to match the director's needs.</span></p>
+<p>• <span class="lang-cn">控制构图、光影与氛围表达，生成可直接进入后期剪辑的标准化素材。</span><span class="lang-en">Controlled composition, lighting, and mood, delivering standardized materials for post-editing.</span></p>
+<p>• <span class="lang-cn">配合角色设计与 AI 动画测试，保证角色比例、动作逻辑与整体风格一致。</span><span class="lang-en">Collaborated on character design and AI animation tests to keep proportions, motion logic, and style consistent.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container split">
+<article class="card">
+<h4><span class="lang-cn">故事设定与情绪节奏</span><span class="lang-en">Story Setting &amp; Emotional Rhythm</span></h4>
+<p><span class="lang-cn">《元宵灯会》以元宵佳节为叙事背景，围绕人群中的寻找、灯会中的相遇、兔子灯掉落、双手相触、近景对视与并肩走向灯火构成完整情绪链。它不是静态海报展示，而是以短视频节奏完成“相遇—确认—情绪收束”的轻量叙事。</span><span class="lang-en">Lantern Festival is set during the Shangyuan celebration and builds a full emotional chain through searching in the crowd, a festive encounter, a dropped rabbit lantern, touching hands, close-up eye contact, and a final walk into the lights. It functions as a short-form narrative rather than a static poster set.</span></p>
+</article>
+<article class="card">
+<h4><span class="lang-cn">受众与平台定位</span><span class="lang-en">Audience &amp; Platform Positioning</span></h4>
+<p><span class="lang-cn">项目面向抖音、小红书等短视频平台，内容类型更接近“古风言情漫剧 / AI 叙事短片”。报告中提到女性受众占比较高，因此页面也更强调情绪氛围、角色对视、浪漫关系与节庆场景沉浸感。</span><span class="lang-en">The project targets short-video platforms such as Douyin and Xiaohongshu, aligning with a Guofeng romance manhua-drama / AI narrative short. The report notes a strongly female audience share, so the page emphasizes atmosphere, gaze exchange, romantic tension, and festive immersion.</span></p>
+</article>
+</div>
+</section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">我的职责与工作内容</span><span class="lang-en">My Responsibilities</span></h3>
+<p>• <span class="lang-cn">负责中期场景设计与关键帧创作，建立统一美术标准，保证项目整体视觉风格稳定。</span><span class="lang-en">Handled mid-production scene design and keyframe creation while establishing unified art standards for stable overall visuals.</span></p>
+<p>• <span class="lang-cn">根据镜头与情绪需求优化 AI 提示词，推进国风场景、角色服装与情绪表演的生成控制。</span><span class="lang-en">Optimized AI prompts according to shot and emotional needs, guiding Guofeng scenes, costume design, and emotional performance.</span></p>
+<p>• <span class="lang-cn">参与角色设定与 AI 动画测试，统一人物比例、动作逻辑与镜头中的身份一致性。</span><span class="lang-en">Worked on character setup and AI animation testing to unify proportions, motion logic, and character identity across shots.</span></p>
+<p>• <span class="lang-cn">控制构图、光影、体积光与节庆氛围，并输出可直接进入后期剪辑的标准化素材。</span><span class="lang-en">Controlled composition, lighting, volumetric glow, and festive atmosphere, delivering standardized assets ready for post-editing.</span></p>
+<p>• <span class="lang-cn">结合即梦 Seedance 2.0 等流程进行风格一致的动画测试与画面整合。</span><span class="lang-en">Used workflows including Jimeng Seedance 2.0 for style-consistent animation testing and shot integration.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">画面关键词</span><span class="lang-en">Visual Keywords</span></h3>
+<p>• <span class="lang-cn">长安元宵灯会 / 古街夜市 / 高密度人群</span><span class="lang-en">Shangyuan lantern festival / old-street night market / dense crowds</span></p>
+<p>• <span class="lang-cn">粉色绣花汉服 / 深色长袍男主 / 兔子灯 / 狐狸灯</span><span class="lang-en">Pink embroidered hanfu / dark-robed male lead / rabbit lantern / fox lantern</span></p>
+<p>• <span class="lang-cn">暖橘、绯红、金黄灯光 / 2800–3200K 暖色氛围</span><span class="lang-en">Warm orange, crimson, gold lighting / 2800–3200K warm atmosphere</span></p>
+<p>• <span class="lang-cn">体积光 / 电影感浅景深 / 唐风现实主义 / 4K / 9:16竖屏</span><span class="lang-en">Volumetric light / cinematic depth of field / Tang-style realism / 4K / 9:16 vertical</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container split">
+<article class="card">
+<h4><span class="lang-cn">角色与设定</span><span class="lang-en">Characters &amp; Setting</span></h4>
+<p><span class="lang-cn">从过程材料可见，这个项目不是只做成片，还额外整理了角色与场景设定。角色名为“温姝”“陆时晏”，并通过夜市古街、花灯、兔子灯和烟火等元素，建立出明确的元宵节世界观与浪漫叙事语境。</span><span class="lang-en">The process materials show that the project includes more than a final film: it also organizes character and scene setup. The leads are Wen Shu and Lu Shiyan, while lanterns, fireworks, old streets, and a rabbit lantern shape a recognizable festival-world romance.</span></p>
+</article>
+<article class="card">
+<h4><span class="lang-cn">网站呈现建议</span><span class="lang-en">Portfolio Positioning</span></h4>
+<p><span class="lang-cn">在你的作品集中，它最适合被定位为“AI 辅助国风漫剧案例 / 竖屏叙事短片”，重点展示：角色一致性、移动端短视频叙事、节庆人群场景控制、受众策略、提示词逻辑，以及从角色设定到关键帧再到成片的完整方法链。</span><span class="lang-en">In your portfolio, this fits best as an “AI-assisted Guofeng narrative short / vertical animation case study,” highlighting character consistency, mobile-first storytelling, festive crowd-scene control, audience strategy, prompt logic, and the full chain from character design to keyframes to final video.</span></p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">过程报告页</span><span class="lang-en">Process Report Pages</span></h2>
+</div>
+<div class="report-grid">
+<article class="card"><img alt="Report contact sheet 2" src="assets/lantern-festival/report-contact-2.jpg"/><div class="copy"><h4><span class="lang-cn">过程报告页：元宵灯会案例</span><span class="lang-en">Process Report: Lantern Festival Case Study</span></h4><p><span class="lang-cn">这里只保留《元宵灯会》相关报告页。内容包含项目封面、受众策略、角色与场景设计、故事设定、AI 视频提示词与关键帧展示，更适合作为本项目的单独过程页。</span><span class="lang-en">Only the Lantern Festival-related report pages are kept here. They include the cover, audience strategy, character and scene design, story setting, AI video prompts, and keyframes, making this a cleaner process section focused on the project itself.</span></p></div></article>
+</div>
+</div>
+</section>
+</main>
+<div class="container footer">
+<div class="footer-inner">
+<div><span class="lang-cn">《元宵灯会》已加入网站，作为新的 AI 辅助国风叙事项目；《锈剑与星尘》保留在最后作为纯手绘练习。</span><span class="lang-en">Lantern Festival has been added as a new AI-assisted Guofeng narrative project, while Rusted Sword and Stardust remains last as a hand-drawn practice entry.</span></div>
+<a class="btn" href="index.html"><span class="lang-cn">回到首页</span><span class="lang-en">Back to Home</span></a>
+</div>
+</div>
+<script>
+    const body=document.body;
+    document.getElementById('langToggle').addEventListener('click',()=>body.classList.toggle('lang-en'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yunnan Baiyao × Water Margin — Project Page</title>
+<style>
+    :root{--bg:#1A1A1D;--panel:#1e1e25;--line:rgba(255,255,255,.1);--text:#f5f5f2;--muted:#a7a9b4;--red:#E6397C;--red2:#ff5a95;--shadow:0 24px 70px rgba(0,0,0,.35);--radius:22px;--max:1240px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#141416,#1A1A1D);color:var(--text)}
+    a{text-decoration:none;color:inherit} img,video{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .header{position:sticky;top:0;z-index:60;backdrop-filter:blur(18px);background:rgba(20,20,23,.56);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:14px;flex-wrap:wrap}
+    .brand{font-size:14px;letter-spacing:.22em;text-transform:uppercase}
+    .links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:.25s ease;font-size:14px;background:transparent;color:#fff;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.28)}
+    .btn.primary{background:var(--red);border-color:var(--red)}
+    .btn.primary:hover{background:var(--red2);border-color:var(--red2)}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,.12);padding:9px 12px;border-radius:999px;color:#d6d7de;cursor:pointer}
+    .hero{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+    .hero-bg .half{background-size:cover;background-position:center;filter:saturate(.95)}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.82)),linear-gradient(90deg,rgba(4,4,7,.72) 0%, rgba(4,4,7,.35) 50%, rgba(4,4,7,.72) 100%);z-index:1}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:120px 0 54px clamp(38px,6vw,108px)}
+    .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d8d9df}
+    h1{font-size:clamp(38px,6vw,72px);line-height:.98;letter-spacing:-.03em;margin:16px 0 8px;max-width:900px}
+    .cn-h1{font-size:clamp(22px,2.8vw,32px);color:#d3d5de;font-weight:500;margin:0 0 20px}
+    .sub{font-size:17px;color:#dfe1e9;line-height:1.85;max-width:760px;margin:0 0 22px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+    .chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(230,57,124,.12);border:1px solid rgba(230,57,124,.34);color:#ffcbdc;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;max-width:900px}
+    .meta .cell{padding:18px;background:rgba(10,10,14,.55);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:var(--shadow)}
+    .meta span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9da1af;margin-bottom:8px}
+    .meta strong{font-size:15px;line-height:1.55;font-weight:600}
+    section{padding:78px 0}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:26px}
+    .section-head h2{margin:0;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em;line-height:1.08}
+    .section-head p{max-width:620px;margin:0;color:var(--muted);line-height:1.85}
+    .panel,.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow)}
+    .two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+    .panel{padding:26px}.panel h3{margin:0 0 12px;font-size:24px}.panel p{margin:0 0 12px;color:var(--muted);line-height:1.9}
+    .panel p:last-child{margin-bottom:0}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .film-card{overflow:hidden;display:flex;flex-direction:column;transition:transform .35s ease,border-color .3s ease}
+    .film-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
+    .film-card .cover{aspect-ratio:16/9;background-size:cover;background-position:center}
+    .film-card .body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+    .film-card h3{margin:2px 0 2px;font-size:26px;letter-spacing:-.02em}
+    .film-card .cn{color:#c9cbd4;font-size:15px;margin:0 0 4px}
+    .film-card .en-p{color:#c1c3cc;font-size:14px;line-height:1.75;margin:6px 0 0}
+    .film-card .cn-p{color:#8f929c;font-size:13px;line-height:1.85;margin:2px 0 0}
+    .film-card .film-links{margin-top:auto;padding-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{padding:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px}
+    .step small{display:block;color:#8f94a2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+    .step strong{display:block;font-size:16px;margin-bottom:8px}
+    .step p{margin:0;color:var(--muted);line-height:1.78;font-size:13.5px}
+    .lang-en{display:none} body.lang-en .lang-cn{display:none} body.lang-en .lang-en{display:unset}
+    .footer{padding:24px 0 40px;color:#989da8}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid rgba(255,255,255,.07);padding-top:20px}
+    @media (max-width:1100px){.two-col,.grid-2{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr}}
+    @media (max-width:720px){.container{width:min(var(--max),calc(100% - 24px))}.hero{min-height:auto}.hero-inner{padding:96px 0 36px 8px}.steps,.meta{grid-template-columns:1fr}section{padding:56px 0}.footer-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+<style>
+/* Mobile-first presentation refinements */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{overflow-x:hidden}
+img,video,iframe{max-width:100%}
+a,button{touch-action:manipulation}
+.bili-embed{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#0b0b0f;border:1px solid rgba(255,255,255,.12)}
+.bili-embed.vertical{aspect-ratio:9/16;max-width:390px;margin-inline:auto}
+.bili-embed iframe{width:100%;height:100%;display:block;border:0}
+.bili-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0 0}
+.bili-watch{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:999px;background:#e6397c;color:white!important;font-weight:650;text-decoration:none!important}
+.bili-note{font-size:13px;line-height:1.65;opacity:.8}
+@media(max-width:720px){
+ :root{--radius:17px}
+ body{font-size:15px;line-height:1.7}
+ .container{width:calc(100% - 28px)!important}
+ .nav{gap:12px;flex-wrap:wrap;padding:12px 0}
+ .brand{font-size:12px;letter-spacing:.1em}
+ .brand strong{font-size:16px}
+ .links{display:flex;flex-wrap:wrap;gap:9px 13px}
+ .links a,.lang-btn{font-size:12px}
+ h1{font-size:clamp(30px,8vw,48px)!important;line-height:1.15}
+ h2{font-size:clamp(23px,6vw,32px)!important;line-height:1.2}
+ h3{font-size:20px!important}
+ p{overflow-wrap:anywhere}
+ .hero{min-height:auto!important}
+ .hero-inner,.two-col,.split,.highlight,.about,.credits,.grid-2,.report-grid{grid-template-columns:minmax(0,1fr)!important}
+ .panel,.about-card{padding:20px!important}
+ .featured{grid-template-columns:minmax(0,1fr)!important}
+ .video-wrap{width:100%;overflow:hidden}
+ .video-wrap video{width:100%}
+ .bili-embed{border-radius:12px}
+ .bili-actions{flex-direction:column;align-items:stretch}
+ .bili-watch{width:100%}
+ .bili-embed.vertical{max-width:min(100%,340px)}
+ #about .about{grid-template-columns:minmax(0,1fr)!important}
+ #about .photo-box{max-width:100%!important}
+ #about .photo-box img{width:100%!important;height:auto!important;object-fit:contain!important}
+}
+@media(max-width:390px){.container{width:calc(100% - 24px)!important}.panel,.about-card{padding:16px!important}}
+</style></head>
+<body>
+<header class="header">
+<div class="container nav">
+<a class="brand" href="index.html">PORTFOLIO / BAIYAO × SHUIHU</a>
+<div class="links">
+<a class="btn" href="index.html"><span class="lang-cn">返回首页</span><span class="lang-en">Back Home</span></a>
+<a class="btn" href="wusong.html"><span class="lang-cn">武松打虎</span><span class="lang-en">Wu Song</span></a>
+<a class="btn" href="baihutang.html"><span class="lang-cn">误入白虎堂</span><span class="lang-en">White Tiger Hall</span></a>
+<button class="lang-btn" id="langToggle">中 / EN</button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg">
+<div class="half" style="background-image:url('assets/shuihu/wusong-cover.jpg')"></div>
+<div class="half" style="background-image:url('assets/shuihu/baihutang-cover.jpg')"></div>
+</div>
+<div class="container hero-inner">
+<div class="eyebrow">AD CAMPAIGN · PAPER CRAFT × AI ANIMATION</div>
+<h1>Yunnan Baiyao × Water Margin</h1>
+<p class="cn-h1">云南白药 × 水浒传</p>
+<p class="sub">
+<span class="lang-cn">这是一组为大学生广告大赛创作的品牌案例，将中国四大名著《水浒传》与云南白药的产品语言重新组合，通过瓦楞纸手工艺 × AI 动画的方式，输出两支具有仪式感与东方美学的短片：《武松打虎》与《误入白虎堂》。</span>
+<span class="lang-en">A brand campaign entry for a university-level advertising competition. The project reinterprets Water Margin — one of China's four classic novels — through the visual language of Yunnan Baiyao, using corrugated paper craft combined with AI animation to produce two ceremonial, orientally styled shorts: "Wu Song Fights the Tiger" and "Trespassing the White Tiger Hall."</span>
+</p>
+<div class="chips">
+<span class="chip">Brand Campaign</span>
+<span class="chip">Corrugated Paper Craft</span>
+<span class="chip">AI Animation</span>
+<span class="chip">Water Margin IP</span>
+<span class="chip">Chinese Aesthetics</span>
+</div>
+<div class="meta">
+<div class="cell"><span>Type</span><strong><span class="lang-cn">品牌广告 · 校园竞赛</span><span class="lang-en">Brand Ad · Competition</span></strong></div>
+<div class="cell"><span>Format</span><strong><span class="lang-cn">纸艺 × AI 动画</span><span class="lang-en">Paper Craft × AI Animation</span></strong></div>
+<div class="cell"><span>Films</span><strong>2 × Short</strong></div>
+<div class="cell"><span>Client</span><strong>Yunnan Baiyao</strong></div>
+</div>
+</div>
+</section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">项目概念</span><span class="lang-en">Concept</span></h3>
+<p><span class="lang-cn">《水浒传》是中国传统叙事中英雄气质最鲜明的文本之一；云南白药作为百年国民品牌，本身也带有浓厚的"守护"与"力量"隐喻。本项目将两者的东方精神拉到同一条视觉线上，用瓦楞纸手工艺塑造角色与场景骨架，再用 AI 动画完成运动与镜头语言，得到一种介于装置艺术与商业广告之间的国潮短片形式。</span><span class="lang-en">Water Margin is one of the most iconic hero-driven texts in Chinese classical literature; Yunnan Baiyao, as a century-old national brand, carries strong metaphors of protection and strength. This project aligns both through a single visual language: corrugated paper craft shapes characters and scenes, while AI animation drives movement and cinematic framing, producing a Guochao short-film style that sits between installation art and brand advertising.</span></p>
+<p><span class="lang-cn">两支短片各自围绕一个经典章节：《武松打虎》强调力量与保护，与云南白药的"守护力"呼应；《误入白虎堂》强调秩序与清白，与产品线中的"光钻白 · 光净"叙事相扣。</span><span class="lang-en">Each short focuses on a classic chapter: "Wu Song Fights the Tiger" foregrounds strength and protection, echoing Yunnan Baiyao's protective proposition; "Trespassing the White Tiger Hall" foregrounds order and clarity, tying into the Pro Shining White product narrative.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">我的职责与工作内容</span><span class="lang-en">My Responsibilities</span></h3>
+<p>• <span class="lang-cn">负责从水浒章节中提炼可视化叙事段落，与品牌产品概念对齐，形成两支短片的故事骨架与镜头逻辑。</span><span class="lang-en">I extracted visual narrative segments from the source chapters and aligned them with the brand's product concept, forming the story spine and shot logic of both shorts.</span></p>
+<p>• <span class="lang-cn">负责整体视觉方向与美术标准：确定瓦楞纸艺 × AI 动画的混合风格、色系、材质与镜头气质。</span><span class="lang-en">I set the overall visual direction and art standards: defining the hybrid style of paper craft × AI animation, color palette, materials, and cinematic tone.</span></p>
+<p>• <span class="lang-cn">负责角色、道具与场景的纸艺设计稿及关键帧生成控制，保证两支短片风格统一。</span><span class="lang-en">I handled paper-craft design for characters, props, and scenes, plus keyframe generation control to keep both shorts stylistically unified.</span></p>
+<p>• <span class="lang-cn">根据镜头需求撰写与调试 AI 提示词，推进图生视频的镜头运动与情绪节奏。</span><span class="lang-en">I wrote and tuned AI prompts per shot, driving motion and emotional pacing across image-to-video generation.</span></p>
+<p>• <span class="lang-cn">负责后期剪辑与音乐/声音整合，把两支短片推进为完整的品牌成片。</span><span class="lang-en">I handled post-editing and music/sound integration, driving both shorts to finished brand deliverables.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">两支短片</span><span class="lang-en">Two Short Films</span></h2>
+<p><span class="lang-cn">分别以《水浒传》中最具视觉张力的两个段落作为改编原点，进入各自的项目页可以看到详细的分镜、纸艺设计、镜头拆解与成片。</span><span class="lang-en">Each short adapts one of the most visually striking chapters from Water Margin. Their individual pages contain storyboards, paper-craft design, shot breakdowns, and final films.</span></p>
+</div>
+<div class="grid-2">
+<article class="card film-card">
+<div class="cover" style="background-image:url('assets/shuihu/wusong-cover.jpg')"></div>
+<div class="body">
+<span class="chip" style="align-self:flex-start">Film 01 · Protection</span>
+<h3>Wu Song Fights the Tiger</h3>
+<div class="cn">武松打虎</div>
+<p class="en-p">A ceremonial reinterpretation of the classic tiger-fighting chapter, where paper-crafted forms and AI motion translate the hero's protective strength into the brand's guardian language.</p>
+<p class="cn-p">对经典打虎章节的仪式化重构，用纸艺造型与 AI 运动镜头，把英雄的守护力量转化为品牌的守护叙事。</p>
+<div class="film-links">
+<a class="btn primary" href="wusong.html"><span class="lang-cn">进入项目页</span><span class="lang-en">Open Project</span></a>
+</div>
+</div>
+</article>
+<article class="card film-card">
+<div class="cover" style="background-image:url('assets/shuihu/baihutang-cover.jpg')"></div>
+<div class="body">
+<span class="chip" style="align-self:flex-start">Film 02 · Clarity</span>
+<h3>Trespassing the White Tiger Hall</h3>
+<div class="cn">误入白虎堂</div>
+<p class="en-p">Adapting Lin Chong's fall into the White Tiger Hall, this short uses paper-crafted armor and AI cinematography to speak to clarity, order, and vindication.</p>
+<p class="cn-p">改编林冲误入白虎堂的经典段落，用纸艺甲胄与 AI 镜头语言，讲述清白、秩序与产品语义的连接。</p>
+<div class="film-links">
+<a class="btn primary" href="baihutang.html"><span class="lang-cn">进入项目页</span><span class="lang-en">Open Project</span></a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">项目流程</span><span class="lang-en">Project Pipeline</span></h2>
+<p><span class="lang-cn">从原著章节提炼、品牌概念对齐、纸艺设计到 AI 动画与最终剪辑，六个阶段串起整个案例。</span><span class="lang-en">Six stages structure the entire case, from source-chapter distillation and brand alignment to paper-craft design, AI animation, and final editing.</span></p>
+</div>
+<div class="steps">
+<div class="step"><small>01</small><strong><span class="lang-cn">章节提炼</span><span class="lang-en">Chapter Distillation</span></strong><p><span class="lang-cn">从《水浒传》中筛选与云南白药气质匹配的两个高识别度段落。</span><span class="lang-en">Selecting two highly recognizable Water Margin chapters that align with Yunnan Baiyao's brand character.</span></p></div>
+<div class="step"><small>02</small><strong><span class="lang-cn">品牌对齐</span><span class="lang-en">Brand Alignment</span></strong><p><span class="lang-cn">把两支短片的情绪主线锚定到"守护"与"清白"两条品牌关键词。</span><span class="lang-en">Anchoring each short's emotional line to the brand keywords of "protection" and "clarity."</span></p></div>
+<div class="step"><small>03</small><strong><span class="lang-cn">纸艺设计</span><span class="lang-en">Paper Craft Design</span></strong><p><span class="lang-cn">为角色、道具与场景绘制瓦楞纸手工艺造型，确定统一材质与色系。</span><span class="lang-en">Designing corrugated-paper forms for characters, props, and scenes with a unified material and palette.</span></p></div>
+<div class="step"><small>04</small><strong><span class="lang-cn">关键帧生成</span><span class="lang-en">Keyframe Generation</span></strong><p><span class="lang-cn">在纸艺形象稳定后再进入 AI 关键帧，保证品牌视觉一致性。</span><span class="lang-en">Only after paper-craft designs are locked do we move into AI keyframe generation, keeping brand visuals consistent.</span></p></div>
+<div class="step"><small>05</small><strong><span class="lang-cn">AI 动画</span><span class="lang-en">AI Animation</span></strong><p><span class="lang-cn">通过提示词与图生视频推进镜头运动、材质呼吸感与仪式化的节奏。</span><span class="lang-en">Using prompts and image-to-video generation to drive shot motion, material breathing, and ceremonial rhythm.</span></p></div>
+<div class="step"><small>06</small><strong><span class="lang-cn">剪辑与整合</span><span class="lang-en">Editing &amp; Integration</span></strong><p><span class="lang-cn">最终通过剪辑节奏、音乐与产品收束，把两支短片打磨为成片。</span><span class="lang-en">Editing rhythm, music, and product resolution finally polish both shorts into finished films.</span></p></div>
+</div>
+</div>
+</section>
+</main>
+<div class="container footer">
+<div class="footer-inner">
+<div><span class="lang-cn">《云南白药 × 水浒传》以纸艺 × AI 动画的方式重新诠释东方叙事与国民品牌语言。</span><span class="lang-en">Yunnan Baiyao × Water Margin reinterprets Chinese narrative and national-brand language through paper craft × AI animation.</span></div>
+<a class="btn" href="index.html"><span class="lang-cn">回到首页</span><span class="lang-en">Back to Home</span></a>
+</div>
+</div>
+<script>
+    const body=document.body;
+    document.getElementById('langToggle').addEventListener('click',()=>body.classList.toggle('lang-en'));
+  </script>
+</body>
+</html>

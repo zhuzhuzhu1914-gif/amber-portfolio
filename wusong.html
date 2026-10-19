@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wu Song Fights the Tiger — Project Page</title>
+<style>
+    :root{--bg:#1A1A1D;--panel:#1e1e25;--line:rgba(255,255,255,.1);--text:#f5f5f2;--muted:#a7a9b4;--red:#E6397C;--red2:#ff5a95;--shadow:0 24px 70px rgba(0,0,0,.35);--radius:22px;--max:1200px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#141416,#1A1A1D);color:var(--text)}
+    a{text-decoration:none;color:inherit} img,video{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .header{position:sticky;top:0;z-index:60;backdrop-filter:blur(18px);background:rgba(20,20,23,.56);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:14px;flex-wrap:wrap}
+    .brand{font-size:14px;letter-spacing:.22em;text-transform:uppercase}
+    .links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:.25s ease;font-size:14px;background:transparent;color:#fff;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.28)}
+    .btn.primary{background:var(--red);border-color:var(--red)}
+    .btn.primary:hover{background:var(--red2);border-color:var(--red2)}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,.12);padding:9px 12px;border-radius:999px;color:#d6d7de;cursor:pointer}
+    .hero{position:relative;min-height:76vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.78)),linear-gradient(90deg,rgba(4,4,7,.9) 0%, rgba(4,4,7,.55) 55%, rgba(4,4,7,.2) 100%);z-index:1}
+    .hero-bg{position:absolute;inset:0;background:url('assets/shuihu/wusong-cover.jpg') center/cover no-repeat;transform:scale(1.02)}
+    .hero-inner{position:relative;z-index:2;width:100%;padding:110px 0 46px clamp(38px,6vw,108px)}
+    .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d8d9df}
+    h1{font-size:clamp(42px,7vw,80px);line-height:.98;letter-spacing:-.03em;margin:14px 0 8px}
+    .cn-h1{font-size:clamp(22px,2.8vw,30px);color:#d3d5de;font-weight:500;margin:0 0 18px}
+    .sub{font-size:17px;color:#dfe1e9;line-height:1.85;max-width:740px;margin:0 0 22px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(230,57,124,.12);border:1px solid rgba(230,57,124,.34);color:#ffcbdc;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;max-width:820px}
+    .meta .cell{padding:16px;background:rgba(10,10,14,.55);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:var(--shadow)}
+    .meta span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9da1af;margin-bottom:8px}
+    .meta strong{font-size:15px;line-height:1.55;font-weight:600}
+    section{padding:70px 0}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}
+    .section-head h2{margin:0;font-size:clamp(26px,3.6vw,40px);letter-spacing:-.03em;line-height:1.08}
+    .section-head p{max-width:600px;margin:0;color:var(--muted);line-height:1.85}
+    .panel,.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow)}
+    .two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+    .panel{padding:26px}.panel h3{margin:0 0 12px;font-size:22px}.panel p{margin:0 0 12px;color:var(--muted);line-height:1.9}
+    .panel p:last-child{margin-bottom:0}
+    .hero-visual{overflow:hidden;border-radius:22px}
+    .hero-visual img{width:100%;height:auto;object-fit:cover}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{padding:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px}
+    .step small{display:block;color:#8f94a2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+    .step strong{display:block;font-size:16px;margin-bottom:8px}
+    .step p{margin:0;color:var(--muted);line-height:1.78;font-size:13.5px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .card{padding:22px}.card h4{margin:0 0 10px;font-size:19px}.card p{margin:0;color:var(--muted);line-height:1.85}
+    .lang-en{display:none} body.lang-en .lang-cn{display:none} body.lang-en .lang-en{display:unset}
+    .footer{padding:24px 0 40px;color:#989da8}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid rgba(255,255,255,.07);padding-top:20px}
+    @media (max-width:1100px){.two-col,.split{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr}}
+    @media (max-width:720px){.container{width:min(var(--max),calc(100% - 24px))}.hero{min-height:auto}.hero-inner{padding:90px 0 34px 8px}.steps,.meta{grid-template-columns:1fr}section{padding:52px 0}.footer-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+<style>
+/* Mobile-first presentation refinements */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{overflow-x:hidden}
+img,video,iframe{max-width:100%}
+a,button{touch-action:manipulation}
+.bili-embed{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#0b0b0f;border:1px solid rgba(255,255,255,.12)}
+.bili-embed.vertical{aspect-ratio:9/16;max-width:390px;margin-inline:auto}
+.bili-embed iframe{width:100%;height:100%;display:block;border:0}
+.bili-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0 0}
+.bili-watch{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:999px;background:#e6397c;color:white!important;font-weight:650;text-decoration:none!important}
+.bili-note{font-size:13px;line-height:1.65;opacity:.8}
+@media(max-width:720px){
+ :root{--radius:17px}
+ body{font-size:15px;line-height:1.7}
+ .container{width:calc(100% - 28px)!important}
+ .nav{gap:12px;flex-wrap:wrap;padding:12px 0}
+ .brand{font-size:12px;letter-spacing:.1em}
+ .brand strong{font-size:16px}
+ .links{display:flex;flex-wrap:wrap;gap:9px 13px}
+ .links a,.lang-btn{font-size:12px}
+ h1{font-size:clamp(30px,8vw,48px)!important;line-height:1.15}
+ h2{font-size:clamp(23px,6vw,32px)!important;line-height:1.2}
+ h3{font-size:20px!important}
+ p{overflow-wrap:anywhere}
+ .hero{min-height:auto!important}
+ .hero-inner,.two-col,.split,.highlight,.about,.credits,.grid-2,.report-grid{grid-template-columns:minmax(0,1fr)!important}
+ .panel,.about-card{padding:20px!important}
+ .featured{grid-template-columns:minmax(0,1fr)!important}
+ .video-wrap{width:100%;overflow:hidden}
+ .video-wrap video{width:100%}
+ .bili-embed{border-radius:12px}
+ .bili-actions{flex-direction:column;align-items:stretch}
+ .bili-watch{width:100%}
+ .bili-embed.vertical{max-width:min(100%,340px)}
+ #about .about{grid-template-columns:minmax(0,1fr)!important}
+ #about .photo-box{max-width:100%!important}
+ #about .photo-box img{width:100%!important;height:auto!important;object-fit:contain!important}
+}
+@media(max-width:390px){.container{width:calc(100% - 24px)!important}.panel,.about-card{padding:16px!important}}
+</style></head>
+<body>
+<header class="header">
+<div class="container nav">
+<a class="brand" href="index.html">PORTFOLIO / WU SONG</a>
+<div class="links">
+<a class="btn" href="baiyao-shuihu.html"><span class="lang-cn">项目总页</span><span class="lang-en">Campaign Overview</span></a>
+<a class="btn" href="baihutang.html"><span class="lang-cn">误入白虎堂</span><span class="lang-en">White Tiger Hall</span></a>
+<a class="btn" href="index.html"><span class="lang-cn">首页</span><span class="lang-en">Home</span></a>
+<button class="lang-btn" id="langToggle">中 / EN</button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="container hero-inner">
+<div class="eyebrow">FILM 01 · YUNNAN BAIYAO × WATER MARGIN · PROTECTION</div>
+<h1>Wu Song Fights the Tiger</h1>
+<p class="cn-h1">武松打虎</p>
+<p class="sub">
+<span class="lang-cn">《水浒传》中最具冲击力的段落之一，被重新构建为一次仪式化的力量表达：瓦楞纸打造的猛虎与英雄骨架，在 AI 动画的运动语言中回到品牌"守护"的核心。</span>
+<span class="lang-en">One of the most iconic passages in Water Margin, restaged as a ceremonial expression of strength: paper-crafted tiger and hero forms move through AI-driven cinematography, returning to Yunnan Baiyao's core idea of protection.</span>
+</p>
+<div class="chips">
+<span class="chip">Brand Short</span>
+<span class="chip">Paper Craft</span>
+<span class="chip">AI Cinematography</span>
+<span class="chip">Protection</span>
+</div>
+<div class="meta">
+<div class="cell"><span>Chapter</span><strong><span class="lang-cn">武松打虎 · 景阳冈</span><span class="lang-en">Wu Song · Jingyang Ridge</span></strong></div>
+<div class="cell"><span>Brand Angle</span><strong><span class="lang-cn">守护力量</span><span class="lang-en">Protective Strength</span></strong></div>
+<div class="cell"><span>Style</span><strong><span class="lang-cn">纸艺 × AI 动画</span><span class="lang-en">Paper Craft × AI</span></strong></div>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">成片</span><span class="lang-en">Film</span></h2>
+<p><span class="lang-cn">短片以"景阳冈打虎"作为叙事骨架，把猛虎、酒、山道、月光转化为纸艺造型与镜头语言，收束到品牌的守护主题。</span><span class="lang-en">Structured around the Jingyang Ridge chapter, the film translates tiger, wine, mountain path, and moonlight into paper-crafted forms and cinematic language that resolve into the brand's protective theme.</span></p>
+</div>
+<div class="card" style="padding:26px;display:flex;justify-content:center">
+<a class="btn primary" href="https://www.bilibili.com/video/BV18Xn76pEdR/" onclick="alert('视频将替换为线上视频平台链接（B站/YouTube/Vimeo/OSS 等），到时替换此按钮的 href。');return false;" rel="noopener noreferrer" target="_blank"><span class="lang-cn">打开视频</span><span class="lang-en">Open Video</span></a>
+</div>
+</div>
+<div class="container"><div class="bili-player-block"><div class="bili-embed"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://player.bilibili.com/player.html?bvid=BV18Xn76pEdR&amp;page=1&amp;high_quality=1" title="伏虎除忧，白药护牙 — Bilibili"></iframe></div><div class="bili-actions"><a class="bili-watch" href="https://www.bilibili.com/video/BV18Xn76pEdR/" rel="noopener noreferrer" target="_blank">在 B站观看完整视频 / Watch on Bilibili</a><span class="bili-note">如内嵌播放器无法加载，请点击按钮跳转至 B站。</span></div></div></div></section>
+<section>
+<div class="container two-col">
+<article class="panel">
+<h3><span class="lang-cn">改编视角</span><span class="lang-en">Adaptation Angle</span></h3>
+<p><span class="lang-cn">"武松打虎"在原著中承担的是"个人英雄面对不可控威胁"的段落。改编时，我把重心放在"守护"上：不是渲染打斗，而是通过身体、道具与光线的关系，去暗示一种可被信任的力量。</span><span class="lang-en">In the original text, the tiger-fighting chapter delivers a moment of a solitary hero facing an uncontrollable threat. In the adaptation, I refocus the piece around "protection" — not spectacle. The relationship between body, prop, and light suggests a strength that can be trusted.</span></p>
+<p><span class="lang-cn">这也让"英雄"和"品牌"共享同一层意义：不是为了炫技，而是站在使用者一侧的力量。</span><span class="lang-en">This lets "hero" and "brand" share one layer of meaning: strength that stands on the user's side, not strength for spectacle.</span></p>
+</article>
+<aside class="panel">
+<h3><span class="lang-cn">我的职责与工作内容</span><span class="lang-en">My Responsibilities</span></h3>
+<p>• <span class="lang-cn">从原文提炼可视化叙事段落，与品牌"守护"主题对齐，形成本片故事骨架。</span><span class="lang-en">I distilled the source chapter into visual narrative beats aligned with the brand's protection theme, forming the story spine.</span></p>
+<p>• <span class="lang-cn">负责纸艺猛虎与武松造型的美术方向、比例与材质设定。</span><span class="lang-en">I directed the paper-craft design of the tiger and Wu Song — proportions, material, and identity.</span></p>
+<p>• <span class="lang-cn">负责镜头设计与关键帧生成，用低角度、贴地拍摄和局部特写强化压迫感与保护欲。</span><span class="lang-en">I designed the shot list and generated keyframes, using low angles, ground-level tracking, and close-ups to reinforce threat and protection.</span></p>
+<p>• <span class="lang-cn">负责提示词撰写与图生视频调试，控制猛虎、月光与草坡的运动质感。</span><span class="lang-en">I wrote and tuned prompts for image-to-video, controlling the motion feel of tiger, moonlight, and mountain grass.</span></p>
+<p>• <span class="lang-cn">负责最终剪辑、音乐节奏与品牌产品收束镜头。</span><span class="lang-en">I handled final editing, music pacing, and the brand-product resolution shot.</span></p>
+</aside>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">主视觉</span><span class="lang-en">Key Visual</span></h2>
+<p><span class="lang-cn">短片主视觉：瓦楞纸猛虎与云南白药"光钻白 · 光净"产品盒并置，形成"力量 × 守护"的视觉锚点。</span><span class="lang-en">The film's key visual pairs a corrugated-paper tiger with Yunnan Baiyao's Pro Shining White packaging — visually anchoring "strength × protection."</span></p>
+</div>
+<div class="hero-visual card">
+<img alt="Wu Song key visual" src="assets/shuihu/wusong-cover.jpg"/>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">镜头与视觉系统</span><span class="lang-en">Shot Language &amp; Visual System</span></h2>
+</div>
+<div class="split">
+<article class="card">
+<h4><span class="lang-cn">镜头语言</span><span class="lang-en">Shot Language</span></h4>
+<p><span class="lang-cn">以低角度贴地跟拍作为主要节奏，让猛虎在画面中始终具有威胁感；关键情绪节点切换为人物近景与手部特写，把"打虎"重新读作"守护"。</span><span class="lang-en">Low-angle ground tracking sets the main rhythm, keeping the tiger constantly menacing. Key emotional beats cut to character close-ups and hand details, reframing the "fight" as "protection."</span></p>
+</article>
+<article class="card">
+<h4><span class="lang-cn">材质与颜色</span><span class="lang-en">Material &amp; Palette</span></h4>
+<p><span class="lang-cn">主体材质为深橘瓦楞纸 + 木色边缘 + 黑色阴影，与云南白药淡蓝色包装形成"暖 × 冷"的品牌反差。月光偏冷白，草坡偏土黄，整体保持仪式感。</span><span class="lang-en">The main material is deep-orange corrugated paper with wood-tone edges and black shadow, contrasting warm hues against Yunnan Baiyao's cool-blue packaging. Moonlight leans cool white, the mountain grass leans earthy yellow, keeping the whole piece ceremonial.</span></p>
+</article>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="section-head">
+<h2><span class="lang-cn">制作流程</span><span class="lang-en">Process</span></h2>
+</div>
+<div class="steps">
+<div class="step"><small>01</small><strong><span class="lang-cn">段落提炼</span><span class="lang-en">Chapter Distillation</span></strong><p><span class="lang-cn">从景阳冈章节中筛出适合仪式化改编的关键情绪节点。</span><span class="lang-en">Selecting the key emotional beats from the Jingyang Ridge chapter suited to ceremonial adaptation.</span></p></div>
+<div class="step"><small>02</small><strong><span class="lang-cn">纸艺设计</span><span class="lang-en">Paper Craft Design</span></strong><p><span class="lang-cn">为猛虎与武松打样，确定材质、比例、关键剪影。</span><span class="lang-en">Prototyping tiger and Wu Song forms — material, proportion, and key silhouettes.</span></p></div>
+<div class="step"><small>03</small><strong><span class="lang-cn">分镜与关键帧</span><span class="lang-en">Storyboard &amp; Keyframes</span></strong><p><span class="lang-cn">先分镜后关键帧，控制打斗节奏与守护主题的转向。</span><span class="lang-en">Boarding first, then keyframes, controlling combat rhythm and the pivot toward protection.</span></p></div>
+<div class="step"><small>04</small><strong><span class="lang-cn">AI 动画</span><span class="lang-en">AI Animation</span></strong><p><span class="lang-cn">用提示词与图生视频推进镜头运动、材质呼吸感、月光变化。</span><span class="lang-en">Prompts and image-to-video drive motion, material breathing, and shifting moonlight.</span></p></div>
+<div class="step"><small>05</small><strong><span class="lang-cn">品牌收束</span><span class="lang-en">Brand Resolution</span></strong><p><span class="lang-cn">在结尾镜头把产品盒与"守护"主题合并成品牌收束。</span><span class="lang-en">The final shot merges the product box with the protection theme as the brand resolution.</span></p></div>
+<div class="step"><small>06</small><strong><span class="lang-cn">剪辑与音乐</span><span class="lang-en">Editing &amp; Music</span></strong><p><span class="lang-cn">剪辑节奏与音乐进入，让整支短片在情绪上闭环。</span><span class="lang-en">Editing rhythm and music close the emotional loop of the whole short.</span></p></div>
+</div>
+</div>
+</section>
+</main>
+<div class="container footer">
+<div class="footer-inner">
+<div><span class="lang-cn">《武松打虎》是"云南白药 × 水浒传"系列的第一支短片，主题为"守护力量"。</span><span class="lang-en">"Wu Song Fights the Tiger" is the first short in the Yunnan Baiyao × Water Margin series, themed around "protective strength."</span></div>
+<a class="btn" href="baiyao-shuihu.html"><span class="lang-cn">回到项目总页</span><span class="lang-en">Back to Campaign</span></a>
+</div>
+</div>
+<script>
+    const body=document.body;
+    document.getElementById('langToggle').addEventListener('click',()=>body.classList.toggle('lang-en'));
+  </script>
+</body>
+</html>
