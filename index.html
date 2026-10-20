@@ -344,6 +344,27 @@
 @media(max-width:850px){#about .about{grid-template-columns:1fr;}#about .photo-box{max-width:520px;width:100%;margin:0 auto;}#about .about-card{padding:24px;}}
 @media(max-width:520px){#about .container{width:calc(100% - 28px);}#about .about-card{padding:20px;}}
 
+
+/* Mobile v2: polished portfolio reading layout, static portrait */
+.photo-frame{cursor:default!important}
+.photo-overlay{display:none!important}
+@media(max-width:720px){
+  html{scroll-padding-top:20px}
+  #about .container{width:calc(100% - 32px)!important}
+  #about .about{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:16px!important}
+  #about .photo-box{width:100%!important;max-width:390px!important;margin:0 auto!important;padding:10px!important;border-radius:22px!important}
+  #about .photo-frame{aspect-ratio:1/1!important;height:auto!important;border-radius:16px!important;overflow:hidden!important}
+  #about .photo-frame img{width:100%!important;height:100%!important;object-fit:contain!important}
+  #about .about-card{padding:24px 20px!important;border-radius:20px!important}
+  #about .about-card h3{font-size:clamp(22px,5.7vw,28px)!important;line-height:1.45!important;overflow-wrap:anywhere}
+  #about .about-card h4{font-size:17px!important;line-height:1.5!important;margin-top:20px}
+  #about .about-card p{font-size:14px!important;line-height:1.9!important;margin:12px 0!important;overflow-wrap:anywhere}
+  #about .about-card a{text-underline-offset:3px}
+  .links{justify-content:flex-start!important;gap:8px 15px!important}
+  .links a{min-height:30px;display:inline-flex;align-items:center}
+  .hero-selfie img{object-fit:cover}
+}
+@media(max-width:390px){#about .about-card{padding:20px 16px!important}.links{gap:6px 11px!important}}
 </style>
 <style>
 /* Mobile-first presentation refinements */
@@ -621,11 +642,10 @@ a,button{touch-action:manipulation}
 </div>
 <div class="about">
 <div class="photo-box project-card">
-<div class="photo-frame" id="portraitUploadBox" title="Click to replace portrait">
+<div class="photo-frame">
 <img alt="Meng Fanzhu Amber portrait" src="assets/portrait/amber-portrait.jpg"/>
-<div class="photo-overlay"><span class="lang-cn">点击可替换为其他人像</span><span class="lang-en">Click to replace portrait</span></div>
+
 </div>
-<input accept="image/*" id="portraitInput" style="display:none" type="file"/>
 </div>
 <div class="about-card project-card">
 <h3 class="editable" contenteditable="true" data-key="about-title"><span class="lang-cn">孟凡筑 Amber / AI 动画导演向创作者</span><span class="lang-en">Meng Fanzhu Amber / AI Film &amp; Animation Creator</span></h3>
@@ -725,26 +745,7 @@ a,button{touch-action:manipulation}
       }
     });
 
-    const portraitBox = document.getElementById('portraitUploadBox');
-    const portraitInput = document.getElementById('portraitInput');
-    const portraitSaved = localStorage.getItem('portfolio_portrait_image_v20261019');
-    if (portraitSaved) {
-      portraitBox.innerHTML = '<img src="' + portraitSaved + '" alt="Portrait" /><div class="photo-overlay"><span class="lang-cn">点击可重新选择照片</span><span class="lang-en">Click to replace portrait</span></div>';
-    }
-    portraitBox.addEventListener('click', () => portraitInput.click());
-    portraitInput.addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        const dataUrl = reader.result;
-        localStorage.setItem('portfolio_portrait_image_v20261019', dataUrl);
-        portraitBox.innerHTML = '<img src="' + dataUrl + '" alt="Portrait" /><div class="photo-overlay"><span class="lang-cn">点击可重新选择照片</span><span class="lang-en">Click to replace portrait</span></div>';
-      };
-      reader.readAsDataURL(file);
-    });
 
-  
     /* ============ v17-C INTERACTIONS JS ============ */
     (function(){
       // Scroll header shrink
